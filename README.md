@@ -10,7 +10,7 @@ Notation & shortcuts are splitted into multiple files depending on subject and c
 + ml-mbo
 + ml-nn: neural networks
 + ml-svm: support vector machines
-+ ml-trees
++ ml-trees: decision trees
 
 ## Using the notation
 - Clone this repository into the main directory of your repo.
