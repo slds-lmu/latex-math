@@ -15,6 +15,7 @@
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
 \newcommand{\yvec}{(y^{(1)}, \hdots, y^{(n)})^T}                            % (y1, ..., yn), vector of outcomes
 \renewcommand{\xi}[1][i]{x^{(#1)}}                                          % x^i, i-th observed value of x
+\newcommand{\xiv}{\bm{x}^{(i)}}												% bold xi (vector)
 \newcommand{\yi}[1][i]{y^{(#1)}}                                            % y^i, i-th observed value of y 
 \newcommand{\xyi}{(\xi, \yi)}                                               % (x^i, y^i), i-th observation
 \newcommand{\xivec}{(x^{(i)}_1, \ldots, x^{(i)}_p)^T}                       % (x1^i, ..., xp^i), i-th observation vector
@@ -23,6 +24,8 @@
 \newcommand{\xjvec}{(x^{(1)}_j, \ldots, x^{(n)}_j)^T}                       % (x^1_j, ..., x^n_j), j-th feature vector
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}}                            % D_train, training set
 \newcommand{\Dtest}{\mathcal{D}_{\text{test}}}                              % D_test, test set
+\newcommand{\phiv}{\bm{\phi}}												% Basis transformation function phi
+\newcommand{\phixi}{\bm{\phi}^{(i)}}										% Basis transformation of xi: phi^i := phi(xi)
 
 %%%%%% ml - models general
 
@@ -52,12 +55,14 @@
 
 % theta
 \newcommand{\thetah}{\hat{\theta}}                                          % theta hat
+\newcommand{\thetav}{\bm{\theta}}											% theta vector
 
 % densities + probabilities
 % pdf of x 
 \newcommand{\pdf}{p}                                                        % p
 \newcommand{\pdfx}{p(x)}                                                    % p(x)
 \newcommand{\pixt}{\pi(x | \theta)}                                         % pi(x|theta), pdf of x given theta
+\newcommand{\pixit}{\pi(\xi | \theta)}                                       % pi(x^i|theta), pdf of x given theta
 
 % pdf of (x, y)
 \newcommand{\pdfxy}{p(x,y)}                                                 % p(x, y)
@@ -72,6 +77,7 @@
 % prior probabilities
 \newcommand{\pik}{\pi_k}                                                    % pi_k, prior
 \newcommand{\lpik}{\log \pik}                                               % log pi_k, log of the prior
+\newcommand{\pit}{\pi(\theta)}												% Prior probability of parameter theta
 
 % posterior probabilities
 \newcommand{\post}{\P(y = 1 | x)}                                           % P(y = 1 | x), post. prob for y=1
@@ -132,3 +138,4 @@
 \newcommand{\Celite}{\theta^*} % elite configurations
 \newcommand{\instances}{\mathcal{I}} % sequence of instances
 \newcommand{\budget}{\mathcal{B}} % computational budget
+
