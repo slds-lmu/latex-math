@@ -1,0 +1,30 @@
+\section{General Notation and Terminology}
+\label{sec:notation}
+
+Consider a $p-$dimensional feature space $\Xspace = (\Xspace[1] \times \Xspace[2] \times \hdots \times \Xspace[p])$ %of arbitrary measurement scales
+and a target space $\Yspace$.
+Suppose that there is an unknown functional relationship $f$ between $\Xspace$ and $\Yspace$.
+ML algorithms try to learn this relationship using training data with observations that have been drawn i.i.d. from an unknown probability distribution $\mathcal{P}$ on the joint space $\Xspace \times \Yspace$.
+%The learned prediction model will be denoted by $\fh$ and approximates $f$.
+We consider an arbitrary prediction model $\fh$, fitted on some training data to approximate $f$ and analyze it with model-agnostic interpretability methods.
+Let $\D = \Dset$ be a test data set sampled i.i.d. from $\mathcal{P}$ where $n$ is the number of observations in the test set.
+Let $P = \{1, \hdots, p\}$ be an index set referring to all features.
+We denote the corresponding random variables generated from the feature space by $X = (X_1, \hdots, X_p)$ and the random variable generated from the target space by $Y$.
+In our notation, the vector $\xi = \xivec \in \Xspace$ refers to the $i$-th observation which is associated with the target outcome $\yi \in \Yspace$ and $\xj = \xjvec$ denotes the realizations of the $j$-th feature.
+%Suppose that there is an unknown functional relationship $f$ that maps each observation $\xi$ to its target outcome $\yi$.
+% Performane estimation
+% The performance estimation of a ML algorithm is based on training the algorithm on training data and estimating the \emph{generalization error} (also known as \emph{test error}) of the algorithm on new (unseen) test data.
+We denote the generalization error of a fitted model on unseen test data from $\mathcal{P}$ by $GE(\fh, \mathcal{P}) = \E(L(\fh(X), Y))$, measured by a loss function $L$.
+%with which the performance of $\fhD$ is measured.
+It can be estimated using the test data $\D$ by %through the empirical expected loss
+%by splitting the observed data $\D$ into a training set $\Dtrain$ and test set $\Dtest = \D \setminus \Dtrain$, fitting the model on the training set and averaging the loss or gain function over an independent test set using
+\begin{equation}
+\label{eq:geest}
+%\GEh{}(\fh, \D) = \frac{1}{|\D|} \sum_{\xy \in \D} L(\fh(x), y).
+\textstyle \GEh{}(\fh, \D) = \frac 1 n \sum_{i=1}^n \Lii.
+\end{equation}
+%Note that if $\fh$ was trained on $\D$ and if the generalization error uses again $\D$ to measure the performance, we obtain an estimate for the training error.
+%We therefore consider $\fh$ as a fixed model that was trained on $\Dtrain$ which is i.i.d. from $\D$. %the observations from the data set $\D$ were not used to fit the model $\fh$.
+A better estimate for the generalization error of an ML algorithm can be obtained using resampling techniques such as cross-validation or bootstrap \citep{Bischl2012}. %as they %reuse the observed data at hand to produce a better estimator.
+%Specifically, they repeatedly split the observed data into training and test sets of equal size, fit a model using the produced training sets and estimate the performance on the remaining test sets.
+%The resulting performance values on each test set are then aggregated by averaging in order to estimate the generalization error more precisely \citep[see e.g.][]{Bischl2012}.
