@@ -12,17 +12,17 @@
 \newcommand{\Xmat}{\bm{X}}													% Design matrix
 \newcommand{\D}{\mathcal{D}}                                                % D, data 
 \newcommand{\Dset}{\left\{ \left(x^{(1)}, y^{(1)}\right), \ldots, \left(x^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
-\newcommand{\xdat}{\left\{ x^{(1)}, \ldots, x^{(n)}\right\}}   						 % {x1, ..., xn}, input data
+\newcommand{\xdat}{\left\{ x^{(1)}, \ldots, x^{(n)}\right\}}   				% {x1, ..., xn}, input data
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
-\newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                            % (y1, ..., yn), vector of outcomes
+\newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                 % (y1, ..., yn), vector of outcomes
 \renewcommand{\xi}[1][i]{x^{(#1)}}                                          % x^i, i-th observed value of x
 \newcommand{\xiv}{\bm{x}^{(i)}}												% bold xi (vector)
 \newcommand{\yi}[1][i]{y^{(#1)}}                                            % y^i, i-th observed value of y 
-\newcommand{\xyi}{\left(\xi, \yi\right)}                                               % (x^i, y^i), i-th observation
-\newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}                       % (x1^i, ..., xp^i), i-th observation vector
+\newcommand{\xyi}{\left(\xi, \yi\right)}                                    % (x^i, y^i), i-th observation
+\newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}            % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{x_j}                                                       % x_j, j-th feature
 \newcommand{\xjb}{\mathbf{x}_j}                                             % x_j (bold), j-th feature vecor
-\newcommand{\xjvec}{\left(x^{(1)}_j, \ldots, x^{(n)}_j\right)^T}                       % (x^1_j, ..., x^n_j), j-th feature vector
+\newcommand{\xjvec}{\left(x^{(1)}_j, \ldots, x^{(n)}_j\right)^T}            % (x^1_j, ..., x^n_j), j-th feature vector
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}}                            % D_train, training set
 \newcommand{\Dtest}{\mathcal{D}_{\text{test}}}                              % D_test, test set
 \newcommand{\phiv}{\bm{\phi}}												% Basis transformation function phi
@@ -36,9 +36,9 @@
 \newcommand{\fh}{\hat{f}}                                                   % f hat, estimated prediction function
 \newcommand{\fxh}{\fh(x)}                                                   % fhat(x)
 \newcommand{\fxt}{f(x | \theta)}                                            % f(x | theta)
-\newcommand{\fxi}{f\left(\xi\right)}                                                   % f(x^(i))
-\newcommand{\fxih}{\hat{f}\left(\xi\right)}                                            % f(x^(i))
-\newcommand{\fxit}{f\left(x^{(i)} | \theta\right)}                                     % f(x^(i) | theta)
+\newcommand{\fxi}{f\left(\xi\right)}                                        % f(x^(i))
+\newcommand{\fxih}{\hat{f}\left(\xi\right)}                                 % f(x^(i))
+\newcommand{\fxit}{f\left(x^{(i)} | \theta\right)}                          % f(x^(i) | theta)
 \newcommand{\fhD}{\fh_{\D}}                                                 % fhat_D, estimate of f based on D
 \newcommand{\fhDtrain}{\fh_{\Dtrain}}                                       % fhat_Dtrain, estimate of f based on D
 
@@ -47,8 +47,8 @@
 \newcommand{\hh}{\hat{h}}                                                   % h hat
 \newcommand{\hxh}{\hat{h}(x)}                                               % hhat(x)
 \newcommand{\hxt}{h(x | \theta)}                                            % h(x | theta)
-\newcommand{\hxi}{h\left(\xi\right)}                                                   % h(x^(i))
-\newcommand{\hxit}{h\left(x^{(i)} | \theta\right)}                                     % h(x^(i) | theta)
+\newcommand{\hxi}{h\left(\xi\right)}                                        % h(x^(i))
+\newcommand{\hxit}{h\left(x^{(i)} | \theta\right)}                          % h(x^(i) | theta)
 
 % yhat
 \newcommand{\yh}{\hat{y}}                                                   % y hat for prediction of target
@@ -63,17 +63,17 @@
 \newcommand{\pdf}{p}                                                        % p
 \newcommand{\pdfx}{p(x)}                                                    % p(x)
 \newcommand{\pixt}{\pi(x | \theta)}                                         % pi(x|theta), pdf of x given theta
-\newcommand{\pixit}{\pi\left(\xi | \theta\right)}                                       % pi(x^i|theta), pdf of x given theta
+\newcommand{\pixit}{\pi\left(\xi | \theta\right)}                           % pi(x^i|theta), pdf of x given theta
 
 % pdf of (x, y)
 \newcommand{\pdfxy}{p(x,y)}                                                 % p(x, y)
 \newcommand{\pdfxyt}{p(x, y | \theta)}                                      % p(x, y | theta)
-\newcommand{\pdfxyit}{p\left(\xi, \yi | \theta\right)}                                 % p(x^(i), y^(i) | theta)
+\newcommand{\pdfxyit}{p\left(\xi, \yi | \theta\right)}                      % p(x^(i), y^(i) | theta)
 
 % pdf of x given y
 \newcommand{\pdfxyk}{p(x | y=k)}                                            % p(x | y = k)
 \newcommand{\lpdfxyk}{\log \pdfxyk}                                         % log p(x | y = k)
-\newcommand{\pdfxiyk}{p\left(\xi | y=k\right)}                                         % p(x^i | y = k)
+\newcommand{\pdfxiyk}{p\left(\xi | y=k\right)}                              % p(x^i | y = k)
 
 % prior probabilities
 \newcommand{\pik}{\pi_k}                                                    % pi_k, prior
@@ -88,7 +88,7 @@
 \newcommand{\pikxt}{\pi_k(x | \theta)}                                      % pi_k(x | theta), P(y = k | x, theta)
 \newcommand{\pijx}{\pi_j(x)}                                                % pi_j(x), P(y = j | x)
 \newcommand{\pdfygxt}{p(y |x, \theta)}                                      % p(y | x, theta)
-\newcommand{\pdfyigxit}{p\left(\yi |\xi, \theta\right)}                                % p(y^i |x^i, theta)
+\newcommand{\pdfyigxit}{p\left(\yi |\xi, \theta\right)}                     % p(y^i |x^i, theta)
 \newcommand{\lpdfygxt}{\log \pdfygxt }                                      % log p(y | x, theta)
 \newcommand{\lpdfyigxit}{\log \pdfyigxit}                                   % log p(y^i |x^i, theta)
 \newcommand{\pixh}{\hat \pi(x)}                                             % pi(x) hat, P(y = 1 | x) hat
@@ -105,9 +105,9 @@
 
 % ml - loss, risk, likelihood
 \newcommand{\Lxy}{L(y, f(x))}                                               % L(y, f(x)), loss function
-\newcommand{\Lxyi}{L\left(\yi, \fxi\right)}                                            % L(y^i, f(x^i))
-\newcommand{\Lxyt}{L\left(y, \fxt\right)}                                              % L(y, f(x | theta))
-\newcommand{\Lxyit}{L\left(\yi, \fxit\right)}                                          % L(y^i, f(x^i | theta)
+\newcommand{\Lxyi}{L\left(\yi, \fxi\right)}                                 % L(y^i, f(x^i))
+\newcommand{\Lxyt}{L\left(y, \fxt\right)}                                   % L(y, f(x | theta))
+\newcommand{\Lxyit}{L\left(\yi, \fxit\right)}                               % L(y^i, f(x^i | theta)
 \newcommand{\risk}{\mathcal{R}}                                             % R, risk
 \newcommand{\riskf}{\risk(f)}                                               % R(f), risk
 \newcommand{\riske}{\mathcal{R}_{\text{emp}}}                               % R_emp, empirical risk
@@ -135,8 +135,8 @@
 
 
 % ml - irace
-\newcommand{\costs}{\mathcal{C}} % costs
-\newcommand{\Celite}{\theta^*} % elite configurations
-\newcommand{\instances}{\mathcal{I}} % sequence of instances
-\newcommand{\budget}{\mathcal{B}} % computational budget
+\newcommand{\costs}{\mathcal{C}} 											% costs
+\newcommand{\Celite}{\theta^*} 												% elite configurations
+\newcommand{\instances}{\mathcal{I}} 										% sequence of instances
+\newcommand{\budget}{\mathcal{B}} 											% computational budget
 
