@@ -3,7 +3,11 @@
 \newcommand{\Z}{\mathds{Z}}                                                 % Z, integers
 \newcommand{\Q}{\mathds{Q}}                                                 % Q, rationals
 \newcommand{\R}{\mathds{R}}                                                 % R, reals
-\newcommand{\C}{\mathds{C}}                                                 % C, complex
+\ifdefined\C
+  \renewcommand{\C}{\mathds{C}}                                                 % C, complex
+\else
+  \newcommand{\C}{\mathds{C}}                                                 % C, complex
+\fi                                               % C, complex
 \newcommand{\HS}{\mathcal{H}}                                               % H, hilbertspace
 \newcommand{\continuous}{\mathcal{C}}                                       % C, space of continuous functions
 \newcommand{\M}{\mathcal{M}} 												% machine numbers
