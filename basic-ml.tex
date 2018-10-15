@@ -108,8 +108,11 @@
 \newcommand{\Lxyi}{L\left(\yi, \fxi\right)}                                 % L(y^i, f(x^i))
 \newcommand{\Lxyt}{L\left(y, \fxt\right)}                                   % L(y, f(x | theta))
 \newcommand{\Lxyit}{L\left(\yi, \fxit\right)}                               % L(y^i, f(x^i | theta)
+\newcommand{\Lxym}{L(\yi, f(\tilde{x}^{(i)}, \theta))}                      % L(y^i, f(tilde(x)^i | theta), 
+                                                                            % a somewhat weird symbol, loss of the ith obs in a MINIBATCH
 \newcommand{\risk}{\mathcal{R}}                                             % R, risk
 \newcommand{\riskf}{\risk(f)}                                               % R(f), risk
+\newcommand{\riskt}{\mathcal{R}(\theta)}                                    % R(theta), risk
 \newcommand{\riske}{\mathcal{R}_{\text{emp}}}                               % R_emp, empirical risk
 \newcommand{\riskef}{\riske(f)}                                             % R_emp(f)
 \newcommand{\risket}{\mathcal{R}_{\text{emp}}(\theta)}                      % R_emp(theta)
@@ -125,6 +128,9 @@
 \newcommand{\errtrain}{\text{err}_{\text{train}}}                           % training error
 \newcommand{\errtest}{\text{err}_{\text{test}}}                             % training error
 \newcommand{\errexp}{\overline{\text{err}_{\text{test}}}}                   % training error
+
+
+
 
 % resampling
 \newcommand{\GE}[1]{GE\left(\fh_{#1}\right)}                             % Generalization error GE
