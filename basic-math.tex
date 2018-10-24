@@ -1,14 +1,17 @@
 % math spaces
-\renewcommand{\N}{\mathds{N}}                                               % N, naturals, we overwrite as \N  defined 
-                                                                            % by "siunitx" (which we use), for "NEWTON"
+\ifdefined\N                                                                % N, naturals
+\renewcommand{\N}{\mathd{N}}                                                % N defined by "siunitx" (which we use), for "NEWTON"
+\else
+  \newcommand{\N}{\mathds{N}}                                               
+\fi                                               
 \newcommand{\Z}{\mathds{Z}}                                                 % Z, integers
 \newcommand{\Q}{\mathds{Q}}                                                 % Q, rationals
 \newcommand{\R}{\mathds{R}}                                                 % R, reals
 \ifdefined\C
-  \renewcommand{\C}{\mathds{C}}                                                 % C, complex
+  \renewcommand{\C}{\mathds{C}}                                             % C, complex
 \else
-  \newcommand{\C}{\mathds{C}}                                                 % C, complex
-\fi                                               % C, complex
+  \newcommand{\C}{\mathds{C}}                                   
+\fi                                               
 \newcommand{\HS}{\mathcal{H}}                                               % H, hilbertspace
 \newcommand{\continuous}{\mathcal{C}}                                       % C, space of continuous functions
 \newcommand{\M}{\mathcal{M}} 												% machine numbers
