@@ -9,6 +9,7 @@
 \newcommand{\Pxy}{\P_{xy}}                                                  % P_xy
 \newcommand{\xy}{(x, y)}                                                    % observation (x, y)
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T}                         % (x1, ..., xp) 
+\newcommand{\xb}{\bm{x}}													  % x (bold) feature vector
 \newcommand{\Xmat}{\bm{X}}													% Design matrix
 \newcommand{\D}{\mathcal{D}}                                                % D, data 
 \newcommand{\Dset}{\left\{ \left(x^{(1)}, y^{(1)}\right), \ldots, \left(x^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
@@ -18,7 +19,7 @@
 \renewcommand{\xi}[1][i]{x^{(#1)}}                                          % x^i, i-th observed value of x
 \newcommand{\xiv}{\bm{x}^{(i)}}												% bold xi (vector)
 \newcommand{\yi}[1][i]{y^{(#1)}}                                            % y^i, i-th observed value of y 
-\newcommand{\xyi}{\left(\xi, \yi\right)}                                    % (x^i, y^i), i-th observation
+\newcommand{\xyi}[1][i]{\left(\bm{x}^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
 \newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}            % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{x_j}                                                       % x_j, j-th feature
 \newcommand{\xjb}{\mathbf{x}_j}                                             % x_j (bold), j-th feature vecor
@@ -30,8 +31,12 @@
 
 %%%%%% ml - models general
 
+% Inducer / Inducing algorithm
+\newcommand{\inducer}{\mathcal{I}}                                                % Inducer, inducing algorithm, learning algorithm 
+
 % continuous prediction function f
 \newcommand{\fx}{f(x)}                                                      % f(x), continuous prediction function
+\newcommand{\fxv}{f(\xv)}                                                      % f(x), continuous prediction function with x (vector) as an input
 \newcommand{\Hspace}{H}														% hypothesis space where f is from
 \newcommand{\fh}{\hat{f}}                                                   % f hat, estimated prediction function
 \newcommand{\fxh}{\fh(x)}                                                   % fhat(x)
@@ -42,8 +47,10 @@
 \newcommand{\fhD}{\fh_{\D}}                                                 % fhat_D, estimate of f based on D
 \newcommand{\fhDtrain}{\fh_{\Dtrain}}                                       % fhat_Dtrain, estimate of f based on D
 
+
 % discrete prediction function h
 \newcommand{\hx}{h(x)}                                                      % h(x), discrete prediction function
+\newcommand{\hxv}{h(\xv)}                                                      % h(x), discrete prediction function with x (vector) as input
 \newcommand{\hh}{\hat{h}}                                                   % h hat
 \newcommand{\hxh}{\hat{h}(x)}                                               % hhat(x)
 \newcommand{\hxt}{h(x | \theta)}                                            % h(x | theta)
