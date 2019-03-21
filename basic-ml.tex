@@ -1,5 +1,6 @@
 % machine learning
 
+
 %%%%%% ml - data
 \newcommand{\Xspace}{\mathcal{X}}                                           % X, input space
 \newcommand{\Yspace}{\mathcal{Y}}                                           % Y, output space
@@ -9,25 +10,25 @@
 \newcommand{\Pxy}{\P_{xy}}                                                  % P_xy
 \newcommand{\xy}{(x, y)}                                                    % observation (x, y)
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T}                         % (x1, ..., xp) 
-\newcommand{\xb}{\bm{x}}													  % x (bold) feature vector
-\newcommand{\Xmat}{\bm{X}}													% Design matrix
+\newcommand{\xb}{\mathbf{x}}													  % x (bold) feature vector
+\newcommand{\Xmat}{\mathbf{X}}													% Design matrix
 \newcommand{\D}{\mathcal{D}}                                                % D, data 
 \newcommand{\Dset}{\left\{ \left(x^{(1)}, y^{(1)}\right), \ldots, \left(x^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
 \newcommand{\xdat}{\left\{ x^{(1)}, \ldots, x^{(n)}\right\}}   				% {x1, ..., xn}, input data
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
 \newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                 % (y1, ..., yn), vector of outcomes
 \renewcommand{\xi}[1][i]{x^{(#1)}}                                          % x^i, i-th observed value of x
-\newcommand{\xiv}{\bm{x}^{(i)}}												% bold xi (vector)
+\newcommand{\xiv}{\mathbf{x}^{(i)}}												% bold xi (vector)
 \newcommand{\yi}[1][i]{y^{(#1)}}                                            % y^i, i-th observed value of y 
-\newcommand{\xyi}[1][i]{\left(\bm{x}^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
+\newcommand{\xyi}[1][i]{\left(\mathbf{x}^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
 \newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}            % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{x_j}                                                       % x_j, j-th feature
 \newcommand{\xjb}{\mathbf{x}_j}                                             % x_j (bold), j-th feature vecor
 \newcommand{\xjvec}{\left(x^{(1)}_j, \ldots, x^{(n)}_j\right)^T}            % (x^1_j, ..., x^n_j), j-th feature vector
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}}                            % D_train, training set
 \newcommand{\Dtest}{\mathcal{D}_{\text{test}}}                              % D_test, test set
-\newcommand{\phiv}{\bm{\phi}}												% Basis transformation function phi
-\newcommand{\phixi}{\bm{\phi}^{(i)}}										% Basis transformation of xi: phi^i := phi(xi)
+\newcommand{\phiv}{\mathbf{\phi}}												% Basis transformation function phi
+\newcommand{\phixi}{\mathbf{\phi}^{(i)}}										% Basis transformation of xi: phi^i := phi(xi)
 
 %%%%%% ml - models general
 
@@ -63,7 +64,7 @@
 
 % theta
 \newcommand{\thetah}{\hat{\theta}}                                          % theta hat
-\newcommand{\thetav}{\bm{\theta}}											% theta vector
+\newcommand{\thetav}{\mathbf{\theta}}											% theta vector
 
 % densities + probabilities
 % pdf of x 
