@@ -1,5 +1,6 @@
 % machine learning
 
+
 %%%%%% ml - data
 \newcommand{\Xspace}{\mathcal{X}}                                           % X, input space
 \newcommand{\Yspace}{\mathcal{Y}}                                           % Y, output space
@@ -9,31 +10,37 @@
 \newcommand{\Pxy}{\P_{xy}}                                                  % P_xy
 \newcommand{\xy}{(x, y)}                                                    % observation (x, y)
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T}                         % (x1, ..., xp) 
-\newcommand{\Xmat}{\bm{X}}													% Design matrix
+\newcommand{\xb}{\mathbf{x}}													  % x (bold) feature vector
+\newcommand{\Xmat}{\mathbf{X}}													% Design matrix
 \newcommand{\D}{\mathcal{D}}                                                % D, data 
 \newcommand{\Dset}{\left\{ \left(x^{(1)}, y^{(1)}\right), \ldots, \left(x^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
 \newcommand{\xdat}{\left\{ x^{(1)}, \ldots, x^{(n)}\right\}}   				% {x1, ..., xn}, input data
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
 \newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                 % (y1, ..., yn), vector of outcomes
 \renewcommand{\xi}[1][i]{x^{(#1)}}                                          % x^i, i-th observed value of x
-\newcommand{\xiv}{\bm{x}^{(i)}}												% bold xi (vector)
+\newcommand{\xiv}{\mathbf{x}^{(i)}}												% bold xi (vector)
 \newcommand{\yi}[1][i]{y^{(#1)}}                                            % y^i, i-th observed value of y 
-\newcommand{\xyi}{\left(\xi, \yi\right)}                                    % (x^i, y^i), i-th observation
+\newcommand{\xyi}[1][i]{\left(\mathbf{x}^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
 \newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}            % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{x_j}                                                       % x_j, j-th feature
 \newcommand{\xjb}{\mathbf{x}_j}                                             % x_j (bold), j-th feature vecor
 \newcommand{\xjvec}{\left(x^{(1)}_j, \ldots, x^{(n)}_j\right)^T}            % (x^1_j, ..., x^n_j), j-th feature vector
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}}                            % D_train, training set
 \newcommand{\Dtest}{\mathcal{D}_{\text{test}}}                              % D_test, test set
-\newcommand{\phiv}{\bm{\phi}}												% Basis transformation function phi
-\newcommand{\phixi}{\bm{\phi}^{(i)}}										% Basis transformation of xi: phi^i := phi(xi)
+\newcommand{\phiv}{\mathbf{\phi}}												% Basis transformation function phi
+\newcommand{\phixi}{\mathbf{\phi}^{(i)}}										% Basis transformation of xi: phi^i := phi(xi)
 
 %%%%%% ml - models general
 
+% Inducer / Inducing algorithm
+\newcommand{\inducer}{\mathcal{I}}                                                % Inducer, inducing algorithm, learning algorithm 
+
 % continuous prediction function f
+\newcommand{\ftrue}{f_{\text{true}}}										  % True underlying function (if a statistical model is assumed)
+\newcommand{\ftruex}{f_{\text{true}}(x)}										  % True underlying function (if a statistical model is assumed)
 \newcommand{\fx}{f(x)}                                                      % f(x), continuous prediction function
 \newcommand{\fxv}{f(\xv)}                                                      % f(x), continuous prediction function with x (vector) as an input
-\newcommand{\Hspace}{H}														% hypothesis space where f is from
+\newcommand{\Hspace}{\mathcal{H}}														% hypothesis space where f is from
 \newcommand{\fh}{\hat{f}}                                                   % f hat, estimated prediction function
 \newcommand{\fxh}{\fh(x)}                                                   % fhat(x)
 \newcommand{\fxt}{f(x | \theta)}                                            % f(x | theta)
@@ -42,6 +49,7 @@
 \newcommand{\fxit}{f\left(x^{(i)} | \theta\right)}                          % f(x^(i) | theta)
 \newcommand{\fhD}{\fh_{\D}}                                                 % fhat_D, estimate of f based on D
 \newcommand{\fhDtrain}{\fh_{\Dtrain}}                                       % fhat_Dtrain, estimate of f based on D
+
 
 % discrete prediction function h
 \newcommand{\hx}{h(x)}                                                      % h(x), discrete prediction function
@@ -53,12 +61,12 @@
 \newcommand{\hxit}{h\left(x^{(i)} | \theta\right)}                          % h(x^(i) | theta)
 
 % yhat
-\newcommand{\yh}{\hat{y}}                                                   % y hat for prediction of target
-\newcommand{\yih}{\hat{y}}                                                  % y hat for prediction of target
+\newcommand{\yh}{\hat{y}}                                                   % yhat for prediction of target
+\newcommand{\yih}{\hat{y}^{(i)}}                                            % yhat^(i) for prediction of ith targiet
 
 % theta
 \newcommand{\thetah}{\hat{\theta}}                                          % theta hat
-\newcommand{\thetav}{\bm{\theta}}											% theta vector
+\newcommand{\thetav}{\mathbf{\theta}}											% theta vector
 
 % densities + probabilities
 % pdf of x 
@@ -95,6 +103,8 @@
 \newcommand{\lpdfyigxit}{\log \pdfyigxit}                                   % log p(y^i |x^i, theta)
 \newcommand{\pixh}{\hat \pi(x)}                                             % pi(x) hat, P(y = 1 | x) hat
 \newcommand{\pikxh}{\hat \pi_k(x)}                                          % pi_k(x) hat, P(y = k | x) hat
+\newcommand{\pixih}{\hat \pi(x^{(i)})}                                      % pi(x^(i)) with hat
+\newcommand{\pikxih}{\hat \pi_k(x^{(i)})}                                   % pi_k(x^(i)) with hat
 
 % residual and margin
 \newcommand{\eps}{\epsilon}                                                 % residual, stochastic
@@ -115,7 +125,8 @@
 \newcommand{\risk}{\mathcal{R}}                                             % R, risk
 \newcommand{\riskf}{\risk(f)}                                               % R(f), risk
 \newcommand{\riskt}{\mathcal{R}(\theta)}                                    % R(theta), risk
-\newcommand{\riske}{\mathcal{R}_{\text{emp}}}                               % R_emp, empirical risk
+\newcommand{\riske}{\mathcal{R}_{\text{emp}}}                               % R_emp, empirical risk (without factor 1 / n
+\newcommand{\riskeb}{\bar{\mathcal{R}}_{\text{emp}}}                          % R_emp, empirical risk with factor 1 / n
 \newcommand{\riskef}{\riske(f)}                                             % R_emp(f)
 \newcommand{\risket}{\mathcal{R}_{\text{emp}}(\theta)}                      % R_emp(theta)
 \newcommand{\riskr}{\mathcal{R}_{\text{reg}}}                               % R_reg, regularized risk
@@ -135,11 +146,16 @@
 
 
 % resampling
-\newcommand{\GE}[1]{GE\left(\fh_{#1}\right)}                             % Generalization error GE
+\newcommand{\GEf}{GE\left(\fh\right)}                             		% Generalization error of a fitted model
+\newcommand{\GEind}{GE_n\left(\inducer_{L, O}\right)}                             		% Generalization error of a fitted model
+\newcommand{\GE}[1]{GE_n\left(\fh_{#1}\right)}                             % Generalization error GE
 \newcommand{\GEh}[1]{\widehat{GE}_{#1}}                                     % Estimated train error
 \newcommand{\GED}{\GE{\D}}                                                  % Generalization error GE
 \newcommand{\EGEn}{EGE_n}                                                   % Generalization error GE
 \newcommand{\EDn}{\E_{|D| = n}}                                             % Generalization error GE
+
+
+
 
 % ml - irace
 \newcommand{\costs}{\mathcal{C}} 											% costs
