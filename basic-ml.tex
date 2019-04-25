@@ -36,6 +36,8 @@
 \newcommand{\inducer}{\mathcal{I}}                                                % Inducer, inducing algorithm, learning algorithm 
 
 % continuous prediction function f
+\newcommand{\ftrue}{f_{\text{true}}}										  % True underlying function (if a statistical model is assumed)
+\newcommand{\ftruex}{f_{\text{true}}(x)}										  % True underlying function (if a statistical model is assumed)
 \newcommand{\fx}{f(x)}                                                      % f(x), continuous prediction function
 \newcommand{\fxv}{f(\xv)}                                                      % f(x), continuous prediction function with x (vector) as an input
 \newcommand{\Hspace}{\mathcal{H}}														% hypothesis space where f is from
@@ -123,7 +125,8 @@
 \newcommand{\risk}{\mathcal{R}}                                             % R, risk
 \newcommand{\riskf}{\risk(f)}                                               % R(f), risk
 \newcommand{\riskt}{\mathcal{R}(\theta)}                                    % R(theta), risk
-\newcommand{\riske}{\mathcal{R}_{\text{emp}}}                               % R_emp, empirical risk
+\newcommand{\riske}{\mathcal{R}_{\text{emp}}}                               % R_emp, empirical risk (without factor 1 / n
+\newcommand{\riskeb}{\bar{\mathcal{R}}_{\text{emp}}}                          % R_emp, empirical risk with factor 1 / n
 \newcommand{\riskef}{\riske(f)}                                             % R_emp(f)
 \newcommand{\risket}{\mathcal{R}_{\text{emp}}(\theta)}                      % R_emp(theta)
 \newcommand{\riskr}{\mathcal{R}_{\text{reg}}}                               % R_reg, regularized risk
@@ -143,11 +146,16 @@
 
 
 % resampling
-\newcommand{\GE}[1]{GE\left(\fh_{#1}\right)}                             % Generalization error GE
+\newcommand{\GEf}{GE\left(\fh\right)}                             		% Generalization error of a fitted model
+\newcommand{\GEind}{GE_n\left(\inducer_{L, O}\right)}                             		% Generalization error of a fitted model
+\newcommand{\GE}[1]{GE_n\left(\fh_{#1}\right)}                             % Generalization error GE
 \newcommand{\GEh}[1]{\widehat{GE}_{#1}}                                     % Estimated train error
 \newcommand{\GED}{\GE{\D}}                                                  % Generalization error GE
 \newcommand{\EGEn}{EGE_n}                                                   % Generalization error GE
 \newcommand{\EDn}{\E_{|D| = n}}                                             % Generalization error GE
+
+
+
 
 % ml - irace
 \newcommand{\costs}{\mathcal{C}} 											% costs
