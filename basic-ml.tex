@@ -8,19 +8,19 @@
 \newcommand{\pset}{\{1, \ldots, p\}}                                        % set from 1 to p
 \newcommand{\gset}{\{1, \ldots, g\}}                                        % set from 1 to g
 \newcommand{\Pxy}{\P_{xy}}                                                  % P_xy
-\newcommand{\xy}{(x, y)}                                                    % observation (x, y)
+\newcommand{\Exy}{\mathbb{E}_{xy}}                                          % E_xy: Expectation over random variables xy
+\newcommand{\xy}{(\xb, y)}                                                  % observation (x, y)
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T}                         % (x1, ..., xp) 
-\newcommand{\xb}{\mathbf{x}}													  % x (bold) feature vector
-\newcommand{\Xmat}{\mathbf{X}}													% Design matrix
+\newcommand{\xb}{\mathbf{x}}												  % x (bold) feature vector
+\newcommand{\Xmat}{\mathbf{X}}											  % Design matrix
 \newcommand{\D}{\mathcal{D}}                                                % D, data 
-\newcommand{\Dset}{\left\{ \left(x^{(1)}, y^{(1)}\right), \ldots, \left(x^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
-\newcommand{\xdat}{\left\{ x^{(1)}, \ldots, x^{(n)}\right\}}   				% {x1, ..., xn}, input data
+\newcommand{\Dset}{\left\{ \left(\xb^{(1)}, y^{(1)}\right), \ldots, \left(\xb^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
+\newcommand{\xdat}{\left\{ \xb^{(1)}, \ldots, \xb^{(n)}\right\}}   				% {x1, ..., xn}, input data
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
 \newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                 % (y1, ..., yn), vector of outcomes
-\renewcommand{\xi}[1][i]{x^{(#1)}}                                          % x^i, i-th observed value of x
-\newcommand{\xiv}{\mathbf{x}^{(i)}}												% bold xi (vector)
+\renewcommand{\xi}[1][i]{\xb^{(#1)}}                                          % x^i, i-th observed value of x
 \newcommand{\yi}[1][i]{y^{(#1)}}                                            % y^i, i-th observed value of y 
-\newcommand{\xyi}[1][i]{\left(\mathbf{x}^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
+\newcommand{\xyi}[1][i]{\left(\xb^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
 \newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}            % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{x_j}                                                       % x_j, j-th feature
 \newcommand{\xjb}{\mathbf{x}_j}                                             % x_j (bold), j-th feature vecor
@@ -37,28 +37,27 @@
 
 % continuous prediction function f
 \newcommand{\ftrue}{f_{\text{true}}}										  % True underlying function (if a statistical model is assumed)
-\newcommand{\ftruex}{f_{\text{true}}(x)}										  % True underlying function (if a statistical model is assumed)
-\newcommand{\fx}{f(x)}                                                      % f(x), continuous prediction function
-\newcommand{\fxv}{f(\xv)}                                                      % f(x), continuous prediction function with x (vector) as an input
+\newcommand{\ftruex}{\ftrue(\xb)}										  % True underlying function (if a statistical model is assumed)
+\newcommand{\fx}{f(\xb)}                                                      % f(x), continuous prediction function
 \newcommand{\Hspace}{\mathcal{H}}														% hypothesis space where f is from
 \newcommand{\fh}{\hat{f}}                                                   % f hat, estimated prediction function
-\newcommand{\fxh}{\fh(x)}                                                   % fhat(x)
-\newcommand{\fxt}{f(x | \theta)}                                            % f(x | theta)
+\newcommand{\fxh}{\fh(\xb)}                                                   % fhat(x)
+\newcommand{\fxt}{f(\xb | \theta)}                                            % f(x | theta)
 \newcommand{\fxi}{f\left(\xi\right)}                                        % f(x^(i))
 \newcommand{\fxih}{\hat{f}\left(\xi\right)}                                 % f(x^(i))
-\newcommand{\fxit}{f\left(x^{(i)} | \theta\right)}                          % f(x^(i) | theta)
+\newcommand{\fxit}{f\left(\xi ~|~ \theta\right)}                          % f(x^(i) | theta)
 \newcommand{\fhD}{\fh_{\D}}                                                 % fhat_D, estimate of f based on D
 \newcommand{\fhDtrain}{\fh_{\Dtrain}}                                       % fhat_Dtrain, estimate of f based on D
 
 
 % discrete prediction function h
-\newcommand{\hx}{h(x)}                                                      % h(x), discrete prediction function
+\newcommand{\hx}{h(\xb)}                                                      % h(x), discrete prediction function
 \newcommand{\hxv}{h(\xv)}                                                      % h(x), discrete prediction function with x (vector) as input
 \newcommand{\hh}{\hat{h}}                                                   % h hat
-\newcommand{\hxh}{\hat{h}(x)}                                               % hhat(x)
-\newcommand{\hxt}{h(x | \theta)}                                            % h(x | theta)
+\newcommand{\hxh}{\hat{h}(\xb)}                                               % hhat(x)
+\newcommand{\hxt}{h(\xb | \theta)}                                            % h(x | theta)
 \newcommand{\hxi}{h\left(\xi\right)}                                        % h(x^(i))
-\newcommand{\hxit}{h\left(x^{(i)} | \theta\right)}                          % h(x^(i) | theta)
+\newcommand{\hxit}{h\left(\xi | \theta\right)}                          % h(x^(i) | theta)
 
 % yhat
 \newcommand{\yh}{\hat{y}}                                                   % yhat for prediction of target
@@ -66,7 +65,8 @@
 
 % theta
 \newcommand{\thetah}{\hat{\theta}}                                          % theta hat
-\newcommand{\thetav}{\mathbf{\theta}}											% theta vector
+\newcommand{\thetab}{\mathbf{\theta}}											% theta vector
+\newcommand{\thetabh}{\mathbf{\hat\theta}}											% theta vector
 
 % densities + probabilities
 % pdf of x 
@@ -91,8 +91,8 @@
 \newcommand{\pit}{\pi(\theta)}												% Prior probability of parameter theta
 
 % posterior probabilities
-\newcommand{\post}{\P(y = 1 | x)}                                           % P(y = 1 | x), post. prob for y=1
-\newcommand{\pix}{\pi(x)}                                                   % pi(x), P(y = 1 | x)
+\newcommand{\post}{\P(y = 1 | \xb)}                                           % P(y = 1 | x), post. prob for y=1
+\newcommand{\pix}{\pi(\xb)}                                                   % pi(x), P(y = 1 | x)
 \newcommand{\postk}{\P(y = k | x)}                                          % P(y = k | y), post. prob for y=k
 \newcommand{\pikx}{\pi_k(x)}                                                % pi_k(x), P(y = k | x)
 \newcommand{\pikxt}{\pi_k(x | \theta)}                                      % pi_k(x | theta), P(y = k | x, theta)
@@ -101,10 +101,10 @@
 \newcommand{\pdfyigxit}{p\left(\yi |\xi, \theta\right)}                     % p(y^i |x^i, theta)
 \newcommand{\lpdfygxt}{\log \pdfygxt }                                      % log p(y | x, theta)
 \newcommand{\lpdfyigxit}{\log \pdfyigxit}                                   % log p(y^i |x^i, theta)
-\newcommand{\pixh}{\hat \pi(x)}                                             % pi(x) hat, P(y = 1 | x) hat
-\newcommand{\pikxh}{\hat \pi_k(x)}                                          % pi_k(x) hat, P(y = k | x) hat
-\newcommand{\pixih}{\hat \pi(x^{(i)})}                                      % pi(x^(i)) with hat
-\newcommand{\pikxih}{\hat \pi_k(x^{(i)})}                                   % pi_k(x^(i)) with hat
+\newcommand{\pixh}{\hat \pi(\xb)}                                             % pi(x) hat, P(y = 1 | x) hat
+\newcommand{\pikxh}{\hat \pi_k(\xb)}                                          % pi_k(x) hat, P(y = k | x) hat
+\newcommand{\pixih}{\hat \pi(\xi)}                                      % pi(x^(i)) with hat
+\newcommand{\pikxih}{\hat \pi_k(\xi)}                                   % pi_k(x^(i)) with hat
 
 % residual and margin
 \newcommand{\eps}{\epsilon}                                                 % residual, stochastic
@@ -116,11 +116,12 @@
 \newcommand{\Sigmahj}{\hat \Sigma_j}										% estimated covariance matrix for the j-th class
 
 % ml - loss, risk, likelihood
-\newcommand{\Lxy}{L(y, f(x))}                                               % L(y, f(x)), loss function
+\newcommand{\Lxy}{L(y, \fx)}                                               % L(y, f(x)), loss function
 \newcommand{\Lxyi}{L\left(\yi, \fxi\right)}                                 % L(y^i, f(x^i))
 \newcommand{\Lxyt}{L\left(y, \fxt\right)}                                   % L(y, f(x | theta))
 \newcommand{\Lxyit}{L\left(\yi, \fxit\right)}                               % L(y^i, f(x^i | theta)
 \newcommand{\Lxym}{L(\yi, f(\tilde{x}^{(i)}, \theta))}                      % L(y^i, f(tilde(x)^i | theta), 
+\newcommand{\Lhxy}{L(y, \hx)}                                               % L(y, h(x)), loss function on discrete classes
                                                                             % a somewhat weird symbol, loss of the ith obs in a MINIBATCH
 \newcommand{\risk}{\mathcal{R}}                                             % R, risk
 \newcommand{\riskf}{\risk(f)}                                               % R(f), risk
