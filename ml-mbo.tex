@@ -16,3 +16,13 @@
 % already defined in basic-math:
 % \newcommand{\yv}{\boldsymbol{y}}
 \newcommand{\fhx}{\ensuremath{\fh(\xv)}\xspace}            % surrogate (x), better use \mhx for predicted value
+
+
+
+\newcommand{\minit}{m_{\text{init}}}											% Size of the initial design
+\newcommand{\lambdai}{\lambdab^{[i]}}											% input for black box optimization 
+\newcommand{\lambdanew}{\lambdab^{\text{new}}}								% new proposed configuration
+\newcommand{\metadata}{\left\{\left(\lambdai, \Psi^{[i]}\right)\right\}}		% Metadata for the Gaussian process
+\newcommand{\lambdavec}{\lambdab^{[1]}, ..., \lambdab^{[\minit]}}  % Vector of different inputs
+\newcommand{\lambdab}{\boldsymbol{\lambda}}									% input 
+\newcommand{\lambdaopt}{\lambdab^{*}}											% Minimum of the black box function Psi
