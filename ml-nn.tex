@@ -20,7 +20,10 @@
 \newcommand{\Odropout}{\mathnormal{J}(\theta, \mu|X,y)}	           	% dropout objective function
 
 % deeplearning - optimization
-\newcommand{\Lmomentum}{L(\yi, f(x^{(i)}, \theta + \varphi \nu))}                  % momentum risk
+\newcommand{\Lmomentum}{L(\yi, f(x^{(i)}, \thetab + \varphi \nub))}                  % momentum risk
+\newcommand{\Lmomentumtilde}{L(\yi, f(x^{(i)}, \tilde{\thetab}))}                  % Nesterov momentum risk
+\newcommand{\Hess}{\mathbf{H}}
+\newcommand{\nub}{\boldsymbol{\nu}}
 
 % deeplearning - autoencoders
 \newcommand{\uauto}{L(x,g(f(x)))}			% undercomplete autoencoder objective function
