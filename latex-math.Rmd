@@ -39,7 +39,7 @@ sanitize_command <- function(command) {
   paste0("$", stringr::str_replace_all(
     command, 
     pattern = "#([1-9])",
-    replacement = "\\\\#\\1"), "$")
+    replacement = "{\\\\#\\1}"), "$")
 }
 get_command <- function(line) {
   #see https://www.regular-expressions.info/recurse.html#balanced
