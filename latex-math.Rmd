@@ -1,5 +1,5 @@
 ---
-title: "latex-math Macros"
+title: "`latex-math` Macros"
 output: 
   pdf_document:
     keep_tex: TRUE
@@ -28,7 +28,13 @@ library(purrr)
 library(xtable)
 ```
 
+<!-- Run this file with rmarkdown::render() to recreate the tables.  -->
+
+Latex macros like `\frac{#1}{#2}` with arguments are displayed as $\frac{\#1}{\#2}$.
+
+
 ```{r get-macros, echo = FALSE, warning = FALSE}
+# escape the "#"-sign for latex macros with arguments
 sanitize_command <- function(command) {
   paste0("$", stringr::str_replace_all(
     command, 
@@ -36,7 +42,8 @@ sanitize_command <- function(command) {
     replacement = "\\\\#\\1"), "$")
 }
 get_command <- function(line) {
-  command <- regmatches(line, gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl=TRUE))[[1]]
+  #see https://www.regular-expressions.info/recurse.html#balanced
+  command <- regmatches(line, gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl = TRUE))[[1]]
   if (length(command) != 2) return(NULL)
   command[3] <- str_match(line, pattern = "\\}\\s*%\\s*(.*)$")[-1]
   names(command) <- c("Macro", "Notation", "Comment")
