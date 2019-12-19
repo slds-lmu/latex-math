@@ -1,0 +1,51 @@
+---
+title: "latex-math Macros"
+output: 
+  pdf_document:
+    keep_tex: TRUE
+header-includes:
+   - \usepackage{mathtools}
+   - \usepackage{siunitx}
+   - \usepackage{dsfont}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(purrr)
+library(xtable)
+```
+
+```{r get-macros, echo = FALSE}
+get_command <- function(line) {
+  command <- stringr::str_match(
+    line, 
+    pattern = "newcommand\\{(\\\\.+)\\}[:space:]?\\{(.+)\\}\\s*%?\\s*(.*)$")[-1]
+  if (all(is.na(command))) return(NULL)
+  names(command) <- c("Macro", "Notation", "Comment")
+  command[1] <- paste0("\\verb!", command[1], "!")
+  command[2] <- paste0("$", command[2], "$")
+  command
+}
+sanitize_command <- function(command) {
+  command <- stringr::str_replace(
+    line, 
+    pattern = "newcommand\\{(\\\\.+)\\}[:space:]?\\{(.+)\\}\\s*%?\\s*(.*)$")
+}
+
+
+macros <- list.files(pattern = "\\.tex$") %>% 
+  map(~ readLines(.)) %>% 
+  map_depth(.depth = 2, ~ get_command(.)) %>% 
+  map(~ discard(., .p = is.null) %>% 
+        do.call(rbind, .)) 
+names(macros) <- list.files(pattern = "\\.tex$")
+```
+
+```{r print-macros, results='asis', echo = FALSE, }
+for (i in seq_along(macros)) {
+  cat("\\section{",  names(macros)[i], "}")
+  print(knitr::kable(macros[[i]]))
+}
+
+```
