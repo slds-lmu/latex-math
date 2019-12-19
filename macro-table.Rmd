@@ -17,22 +17,30 @@ library(xtable)
 ```
 
 ```{r get-macros, echo = FALSE}
+sanitize_command <- function(command) {
+  command <- stringr::str_replace_all(
+    command, 
+    pattern = "#([1-9])",
+    replacement = "arg\\1")
+}
 get_command <- function(line) {
-  command <- stringr::str_match(
-    line, 
-    pattern = "newcommand\\{(\\\\.+)\\}[:space:]?\\{(.+)\\}\\s*%?\\s*(.*)$")[-1]
-  if (all(is.na(command))) return(NULL)
+  command <- regmatches(line, gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl=TRUE))[[1]]
+  if (length(command)) != 2) return(NULL)
+  command[3] <- str_extract(line, pattern = "\\}\\s*%\\s*(.*)$")
   names(command) <- c("Macro", "Notation", "Comment")
   command[1] <- paste0("\\verb!", command[1], "!")
-  command[2] <- paste0("$", command[2], "$")
+  command[2] <- paste0("$", sanitize_command(command[2]), "$")
   command
 }
-sanitize_command <- function(command) {
-  command <- stringr::str_replace(
-    line, 
-    pattern = "newcommand\\{(\\\\.+)\\}[:space:]?\\{(.+)\\}\\s*%?\\s*(.*)$")
-}
 
+line <- macros[[1]][29]
+
+c(regmatches(line, gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl=TRUE))
+
+str_match(line, "")
+str_match(line, pattern = "\\{(R)\\}")
+
+rex("\\((?>[^()]|(?R))*\\)")
 
 macros <- list.files(pattern = "\\.tex$") %>% 
   map(~ readLines(.)) %>% 
