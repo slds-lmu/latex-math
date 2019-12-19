@@ -1,8 +1,6 @@
 ---
 title: "`latex-math` Macros"
-output: 
-  pdf_document:
-    keep_tex: TRUE
+output: pdf_document
 header-includes:
    - \usepackage{mathtools}
    - \usepackage{bm}
