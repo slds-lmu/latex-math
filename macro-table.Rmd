@@ -5,8 +5,20 @@ output:
     keep_tex: TRUE
 header-includes:
    - \usepackage{mathtools}
+   - \usepackage{bm}
    - \usepackage{siunitx}
    - \usepackage{dsfont}
+   - \usepackage{xspace}
+   - \usepackage{longtable}
+   - \input{basic-ml.tex}
+   - \input{basic-math.tex}
+   - \input{ml-bagging.tex}
+   - \input{ml-boosting.tex}
+   - \input{ml-gp.tex}
+   - \input{ml-mbo.tex}
+   - \input{ml-nn.tex}
+   - \input{ml-svm.tex}
+   - \input{ml-trees.tex}
 ---
 
 ```{r setup, include=FALSE}
@@ -16,31 +28,23 @@ library(purrr)
 library(xtable)
 ```
 
-```{r get-macros, echo = FALSE}
+```{r get-macros, echo = FALSE, warning = FALSE}
 sanitize_command <- function(command) {
-  command <- stringr::str_replace_all(
+  paste0("$", stringr::str_replace_all(
     command, 
     pattern = "#([1-9])",
-    replacement = "arg\\1")
+    replacement = "\\\\#\\1"), "$")
 }
 get_command <- function(line) {
   command <- regmatches(line, gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl=TRUE))[[1]]
-  if (length(command)) != 2) return(NULL)
-  command[3] <- str_extract(line, pattern = "\\}\\s*%\\s*(.*)$")
+  if (length(command) != 2) return(NULL)
+  command[3] <- str_match(line, pattern = "\\}\\s*%\\s*(.*)$")[-1]
   names(command) <- c("Macro", "Notation", "Comment")
   command[1] <- paste0("\\verb!", command[1], "!")
-  command[2] <- paste0("$", sanitize_command(command[2]), "$")
+  command[2] <- sanitize_command(command[2])
+  command[3] <- xtable::sanitize(command[3])
   command
 }
-
-line <- macros[[1]][29]
-
-c(regmatches(line, gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl=TRUE))
-
-str_match(line, "")
-str_match(line, pattern = "\\{(R)\\}")
-
-rex("\\((?>[^()]|(?R))*\\)")
 
 macros <- list.files(pattern = "\\.tex$") %>% 
   map(~ readLines(.)) %>% 
@@ -52,8 +56,13 @@ names(macros) <- list.files(pattern = "\\.tex$")
 
 ```{r print-macros, results='asis', echo = FALSE, }
 for (i in seq_along(macros)) {
-  cat("\\section{",  names(macros)[i], "}")
-  print(knitr::kable(macros[[i]]))
+  cat("\\section{",  names(macros)[i], "} ")
+  null <- print(xtable(macros[[i]]), 
+                sanitize.text.function = I, 
+                include.rownames = FALSE, 
+                floating = FALSE,
+                tabular.environment = "longtable", 
+                comment = FALSE)
+  cat("\\newpage")
 }
-
 ```
