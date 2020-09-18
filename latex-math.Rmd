@@ -17,6 +17,8 @@ header-includes:
    - \input{ml-nn.tex}
    - \input{ml-svm.tex}
    - \input{ml-trees.tex}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -51,6 +53,10 @@ get_command <- function(line) {
   command[3] <- stringr::str_match(line, 
                           pattern = "\\}\\s*%\\s*(.*)$")[-1]
   names(command) <- c("Macro", "Notation", "Comment")
+  command[1] <- substr(command[1], 2, nchar(command[1])-1)
+  if (grepl("IGNORE_NOTATION", command[3])) {
+    command[2] <- ""
+  }
   command[1] <- paste0("\\verb!", command[1], "!")
   command[2] <- sanitize_command(command[2])
   command[3] <- xtable::sanitize(command[3])
@@ -58,6 +64,7 @@ get_command <- function(line) {
 }
 
 texfiles <- list.files(pattern = "\\.tex$")
+texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
 macros <- texfiles %>% 
   map(~ readLines(.)) %>% 
   map_depth(.depth = 2, ~ get_command(.)) %>% 
