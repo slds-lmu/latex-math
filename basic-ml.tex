@@ -4,6 +4,10 @@
 %%%%%% ml - data
 \newcommand{\Xspace}{\mathcal{X}}                                           % X, input space
 \newcommand{\Yspace}{\mathcal{Y}}                                           % Y, output space
+\newcommand{\allDatasets}{\mathds{D}}                                       % The set of all datasets
+\newcommand{\allDatasetsn}{\mathds{D}_n}                                    % The set of all datasets of size n 
+\newcommand{\defAllDatasetsn}{(\Xspace \times \Yspace)^n}                   % Def. of the set of all datasets of size n 
+\newcommand{\defAllDatasets}{\bigcup_{n \in \N}(\Xspace \times \Yspace)^n}  % Def. of the set of all datasets 
 \newcommand{\nset}{\{1, \ldots, n\}}                                        % set from 1 to n
 \newcommand{\pset}{\{1, \ldots, p\}}                                        % set from 1 to p
 \newcommand{\gset}{\{1, \ldots, g\}}                                        % set from 1 to g
@@ -13,7 +17,7 @@
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T}                         % (x1, ..., xp) 
 \newcommand{\Xmat}{\mathbf{X}}											  % Design matrix
 \newcommand{\D}{\mathcal{D}}                                                % D, data 
-\newcommand{\Dset}{\left\{ \left(\mathbf{x}^{(1)}, y^{(1)}\right), \ldots, \left(\mathbf{x}^{(n)},  y^{(n)}\right)\right\}}    % {(x1,y1)), ..., (xn,yn)}, data
+\newcommand{\Dset}{\left( \left(\mathbf{x}^{(1)}, y^{(1)}\right), \ldots, \left(\mathbf{x}^{(n)},  y^{(n)}\right)\right)}    % {(x1,y1)), ..., (xn,yn)}, data
 \newcommand{\xdat}{\left\{ \mathbf{x}^{(1)}, \ldots, \mathbf{x}^{(n)}\right\}}   				% {x1, ..., xn}, input data
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
 \newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                 % (y1, ..., yn), vector of outcomes
@@ -31,8 +35,8 @@
 %%%%%% ml - models general
 
 % Inducer / Inducing algorithm
-\newcommand{\setAllDatasets}{\bigcup_{n \in \N}(\Xspace \times \Yspace)^n}        % The set of all datasets 
-\newcommand{\preimageLearner}{\left(\setAllDatasets\right)\times\bm{\Lambda}}     % Set of all datasets times the hyperparameter space
+\newcommand{\preimageInducer}{\left(\defAllDatasets\right)\times\bm{\Lambda}}     % Set of all datasets times the hyperparameter space
+\newcommand{\preimageInducerShort}{\allDatasets\times\bm{\Lambda}}     % Set of all datasets times the hyperparameter space
 \newcommand{\inducer}{\mathcal{I}}                                                % Inducer, inducing algorithm, learning algorithm 
 
 % continuous prediction function f
