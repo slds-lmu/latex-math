@@ -56,6 +56,8 @@
 \newcommand{\fxit}{f\left(\mathbf{x}^{(i)} ~|~ \bm{\theta}\right)}                          % f(x^(i) | theta)
 \newcommand{\fhD}{\fh_{\D}}                                                 % fhat_D, estimate of f based on D
 \newcommand{\fhDtrain}{\fh_{\Dtrain}}                                       % fhat_Dtrain, estimate of f based on D
+\newcommand{\fbayes}{f^\ast} % The Bayes optimal model
+\newcommand{\fxbayes}{f^\ast(\mathbf{x})} % The Bayes optimal model
 
 
 % discrete prediction function h
@@ -66,6 +68,8 @@
 \newcommand{\hxt}{h(\mathbf{x} | \bm{\theta})}                                            % h(x | theta)
 \newcommand{\hxi}{h\left(\xi\right)}                                        % h(x^(i))
 \newcommand{\hxit}{h\left(\xi ~|~ \bm{\theta}\right)}                          % h(x^(i) | theta)
+\newcommand{\hbayes}{h^\ast} % The Bayes optimal model
+\newcommand{\hxbayes}{h^\ast(\mathbf{x})} % The Bayes optimal model
 
 % yhat
 \newcommand{\yh}{\hat{y}}                                                   % yhat for prediction of target
@@ -104,7 +108,12 @@
 
 % posterior probabilities
 \newcommand{\post}{\P(y = 1 ~|~ \mathbf{x})}                                           % P(y = 1 | x), post. prob for y=1
-\newcommand{\pix}{\pi(\mathbf{x})}                                                   % pi(x), P(y = 1 | x)
+\newcommand{\pix}{\pi(\mathbf{x})}
+                                                   % pi(x), P(y = 1 | x)
+\newcommand{\pibayes}{\pi^\ast} % The Bayes optimal model
+\newcommand{\pixbayes}{\pi^\ast(\mathbf{x})} % The Bayes optimal model
+
+
 \newcommand{\postk}{\P(y = k ~|~ \mathbf{x})}                                          % P(y = k | y), post. prob for y=k
 \newcommand{\pikx}{\pi_k(\mathbf{x})}                                                % pi_k(x), P(y = k | x)
 \newcommand{\pikxt}{\pi_k(\mathbf{x} ~|~ \bm{\theta})}                                      % pi_k(x | theta), P(y = k | x, theta)
@@ -157,6 +166,9 @@
 \newcommand{\riskrf}{\riskr(f)}                                             % R_reg(f)
 \newcommand{\riskrth}{\hat{\mathcal{R}}_{\text{reg}}(\bm{\theta})}              % hat R_reg(theta)
 \newcommand{\risketh}{\hat{\mathcal{R}}_{\text{emp}}(\bm{\theta})}			  % hat R_emp(theta)
+\newcommand{\riskbayes}{\mathcal{R}^\ast}
+
+
 \newcommand{\LL}{\mathcal{L}}                                               % L, likelihood
 \newcommand{\LLt}{\mathcal{L}(\bm{\theta})}                                      % L(theta), likelihood
 \renewcommand{\ll}{\ell}                                                    % l, log-likelihood
