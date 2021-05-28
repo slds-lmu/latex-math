@@ -1,28 +1,45 @@
-% ml - MBO
-\newcommand{\sxh}{\hat{s}(x)} % uncertainty shat(x)
-\newcommand{\vxh}{\hat{s}^2(x)}
+% -  makros mal kürzer, lam statt lambda, s statt star
+% - das : \newcommand{\xpi}[1][i]{x^{*(#1)}}
+% - in basic-ml lamdav zu lamv machen. das wird aber viel in i2ml crashen lassen,
+% - Lambda --> Lam sollten wir dann auch machen. nervt ab er nur rum ???!
+% - file rename to ml-hpo.tex
+% - file contains a lot oof changes, make sure i2ml tuning runs, that should be enough
+%  - ist keine HPO issue, aber I per \inducer abzukürzen it dumm....
+% - die ganzen eval-sachen aus basic-ML müssen vermutlich ein eine ml-eval file, 
+% hier in diesem hpo file ist schon eine HPU abk drin, geht gewrade alles durcheinander
+
+%%% HPO Basics 
+\newcommand{\Ilam}{\inducer_{\lambdav}}						% I_lambda
+\newcommand{\lami}{\lambdav^{(i)}}							% i-th candidate
+\newcommand{\clam}{c(\lambdav)}                             % c(lambda)
+\newcommand{\clamh}{c(\lamh)}                               % c(lambda-hat)
+\newcommand{\lams}{\lambdav^{*}}		                    % Theoretical min of c
+\newcommand{\lamh}{\hat{\lambdav}}		                    % returned lambda of HPO
+\newcommand{\LamS}{\tilde\Lambda}                           % search space
+\newcommand{\lamp}{\lambdav^+}                              % proposed lambda
+\newcommand{\clamp}{c(\lamp)}                               % c of proposed lambda
+\newcommand{\archive}{\mathcal{A}}                          % archive at time step t
+\newcommand{\archivet}[1][t]{\mathcal{A}^{[#1]}}            % archive at time step t
+
+\newcommand{\tuner}{\mathcal{T}}                            % tuner
+\newcommand{\tunerfull}{\tuner_{\inducer,\LamS, \rho,\JJ}}
+     % tuner with inducer, search space, performance measure and resampling strategy
+
+%%% Bayesian Opt
+\newcommand{\chlam}{\hat{c}(\lambdav)}                       % post mean of SM 
+\newcommand{\shlam}{\hat{\sigma}(\lambdav)}                  % post sd of SM
+\newcommand{\vhlam}{\hat{\sigma^2}(\lambdav)}                % post var of SM
+\newcommand{\ulam}{u(\lambdav)}                              % acquisition function
+
+%%% Multifidelity / Hyperband
+\newcommand{\lambu}{\lambda_{\text{budget}}}                 % single lambda_budget komponent HP
+\newcommand{\etahb}{\eta_{\text{HB}}}                        % HB multiplier eta
+ 
+
+%%%  muelliger restscheiss - MUSS SORTIERT WERDEN 
 \newcommand{\matK}{\mathbf{K}}
 \newcommand{\kstarx}{\mathbf{k}_*(x)}
-\newcommand{\xpi}[1][i]{x^{*(#1)}}
-\newcommand{\vhx}{\ensuremath{\sh^2(\xv)}\xspace}          % local estimated variance at point x
-\newcommand{\shx}{\ensuremath{\sh(\xv)}\xspace}            % local estimated uncertainty at point x
-\newcommand{\sh}{\ensuremath{\hat{s}}\xspace}              % local estimated uncertainty
-\newcommand{\px}{\ensuremath{\boldsymbol{x}^*}}
-\newcommand{\equote}[1]{``#1''}
-\newcommand{\vecx}{\ensuremath{\boldsymbol{x}}}
-\newcommand{\yx}{\ensuremath{y(\vecx)}}
-\newcommand{\X}{\ensuremath{\mathcal{X}}\xspace}           % domain / search space
-
-% already defined in basic-math:
-% \newcommand{\yv}{\boldsymbol{y}}
-\newcommand{\fhx}{\ensuremath{\fh(\xv)}\xspace}            % surrogate (x), better use \mhx for predicted value
-
-
-
 \newcommand{\minit}{m_{\text{init}}}											% Size of the initial design
-\newcommand{\lambdai}{\lambdab^{[i]}}											% input for black box optimization 
-\newcommand{\lambdanew}{\lambdab^{\text{new}}}								% new proposed configuration
 \newcommand{\metadata}{\left\{\left(\lambdai, \Psi^{[i]}\right)\right\}}		% Metadata for the Gaussian process
-\newcommand{\lambdavec}{\lambdab^{[1]}, ..., \lambdab^{[\minit]}}  % Vector of different inputs
-\newcommand{\lambdab}{\boldsymbol{\lambda}}									% input 
-\newcommand{\lambdaopt}{\lambdab^{*}}											% Minimum of the black box function Psi
+\newcommand{\lambdavec}{\lambdav^{[1]}, ..., \lambdav^{[\minit]}}  % Vector of different inputs
+

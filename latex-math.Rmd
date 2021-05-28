@@ -8,15 +8,15 @@ header-includes:
    - \usepackage{dsfont}
    - \usepackage{xspace}
    - \usepackage{longtable}
-   # - \input{basic-ml.tex}
-   # - \input{basic-math.tex}
-   # - \input{ml-bagging.tex}
+   - \input{basic-ml.tex}
+   - \input{basic-math.tex}
+   - \input{ml-bagging.tex}
    - \input{ml-boosting.tex}
-   # - \input{ml-gp.tex}
-   # - \input{ml-mbo.tex}
-   # - \input{ml-nn.tex}
-   # - \input{ml-svm.tex}
-   # - \input{ml-trees.tex}
+   - \input{ml-gp.tex}
+   - \input{ml-mbo.tex}
+   - \input{ml-nn.tex}
+   - \input{ml-svm.tex}
+   - \input{ml-trees.tex}
 editor_options: 
   chunk_output_type: console
 ---
@@ -63,9 +63,8 @@ get_command <- function(line) {
   command
 }
 
-#texfiles <- list.files(pattern = "\\.tex$")
-#texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
-texfiles <- "ml-boosting.tex"
+texfiles <- list.files(pattern = "\\.tex$")
+texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
 macros <- texfiles %>% 
   map(~ readLines(.)) %>% 
   map_depth(.depth = 2, ~ get_command(.)) %>% 
@@ -77,13 +76,12 @@ names(macros) <- texfiles
 ```{r print-macros, results='asis', echo = FALSE}
 for (i in seq_along(macros)) {
   cat("\\section{",  names(macros)[i], "} ")
-  cat(macros[[i]])
-  # null <- print(xtable(macros[[i]]), 
-  #               sanitize.text.function = I, 
-  #               include.rownames = FALSE, 
-  #               floating = FALSE,
-  #               tabular.environment = "longtable", 
-  #               comment = FALSE)
+  null <- print(xtable(macros[[i]]), 
+                sanitize.text.function = I, 
+                include.rownames = FALSE, 
+                floating = FALSE,
+                tabular.environment = "longtable", 
+                comment = FALSE)
   cat("\\newpage")
 }
 ```

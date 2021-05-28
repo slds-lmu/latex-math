@@ -4,10 +4,6 @@
 %%%%%% ml - data
 \newcommand{\Xspace}{\mathcal{X}}                                           % X, input space
 \newcommand{\Yspace}{\mathcal{Y}}                                           % Y, output space
-\newcommand{\allDatasets}{\mathds{D}}                                       % The set of all datasets
-\newcommand{\allDatasetsn}{\mathds{D}_n}                                    % The set of all datasets of size n 
-\newcommand{\defAllDatasetsn}{(\Xspace \times \Yspace)^n}                   % Def. of the set of all datasets of size n 
-\newcommand{\defAllDatasets}{\bigcup_{n \in \N}(\Xspace \times \Yspace)^n}  % Def. of the set of all datasets 
 \newcommand{\nset}{\{1, \ldots, n\}}                                        % set from 1 to n
 \newcommand{\pset}{\{1, \ldots, p\}}                                        % set from 1 to p
 \newcommand{\gset}{\{1, \ldots, g\}}                                        % set from 1 to g
@@ -16,8 +12,14 @@
 \newcommand{\xy}{(\mathbf{x}, y)}                                                  % observation (x, y)
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T}                         % (x1, ..., xp) 
 \newcommand{\Xmat}{\mathbf{X}}											  % Design matrix
-\newcommand{\D}{\mathcal{D}}                                                % D, data 
-\newcommand{\Dset}{\left( \left(\mathbf{x}^{(1)}, y^{(1)}\right), \ldots, \left(\mathbf{x}^{(n)},  y^{(n)}\right)\right)}    % {(x1,y1)), ..., (xn,yn)}, data
+\newcommand{\allDatasets}{\mathds{D}}                                       % The set of all datasets
+\newcommand{\D}{\mathcal{D}}                                                      % D, data
+\newcommand{\obs}[1][i]{\left(\xv^{(#1)},y^{(#1)}\right)}                                                                               % observation (x^(i), y^(i))
+\newcommand{\Dset}{\left( \obs[1], \ldots, \obs[n]\right)}    % {(x1,y1)), ..., (xn,yn)}, data
+\newcommand{\Dn}{\D_n}                                                      % D_n, data of size n
+\newcommand{\allDatasetsn}{\mathds{D}_n}                                    % The set of all datasets of size n 
+\newcommand{\defAllDatasetsn}{(\Xspace \times \Yspace)^n}                   % Def. of the set of all datasets of size n 
+\newcommand{\defAllDatasets}{\bigcup_{n \in \N}(\Xspace \times \Yspace)^n}  % Def. of the set of all datasets 
 \newcommand{\xdat}{\left\{ \mathbf{x}^{(1)}, \ldots, \mathbf{x}^{(n)}\right\}}   				% {x1, ..., xn}, input data
 \newcommand{\ydat}{\mathbf{y}}                                              % y (bold), vector of outcomes
 \newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T}                 % (y1, ..., yn), vector of outcomes
@@ -26,7 +28,6 @@
 \newcommand{\xyi}[1][i]{\left(\mathbf{x}^{(#1)}, y^{(#1)}\right)}                                    % (x^i, y^i), i-th observation
 \newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T}            % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{\xv_j}                                                       % x_j, j-th feature
-\newcommand{\xij}{x^{(i)}_j}                                                % x^i_j, j-th feature value of i-th observation
 \newcommand{\xjvec}{\left(x^{(1)}_j, \ldots, x^{(n)}_j\right)^T}            % (x^1_j, ..., x^n_j), j-th feature vector
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}}                            % D_train, training set
 \newcommand{\Dtest}{\mathcal{D}_{\text{test}}}                              % D_test, test set
@@ -34,10 +35,10 @@
 \newcommand{\phixi}{\mathbf{\phi}^{(i)}}										% Basis transformation of xi: phi^i := phi(xi)
 
 %%%%%% ml - models general
-
 % Inducer / Inducing algorithm
 \newcommand{\preimageInducer}{\left(\defAllDatasets\right)\times\bm{\Lambda}}     % Set of all datasets times the hyperparameter space
 \newcommand{\preimageInducerShort}{\allDatasets\times\bm{\Lambda}}     % Set of all datasets times the hyperparameter space
+% Inducer / Inducing algorithm
 \newcommand{\inducer}{\mathcal{I}}                                                % Inducer, inducing algorithm, learning algorithm 
 
 % continuous prediction function f
@@ -57,9 +58,10 @@
 \newcommand{\fxit}{f\left(\mathbf{x}^{(i)} ~|~ \bm{\theta}\right)}                          % f(x^(i) | theta)
 \newcommand{\fhD}{\fh_{\D}}                                                 % fhat_D, estimate of f based on D
 \newcommand{\fhDtrain}{\fh_{\Dtrain}}                                       % fhat_Dtrain, estimate of f based on D
-\newcommand{\fbayes}{f^\ast} % The Bayes optimal model
-\newcommand{\fxbayes}{f^\ast(\mathbf{x})} % The Bayes optimal model
-
+\newcommand{\fhDnlambda}{\fh_{\Dn, \lambdav}}                                       %model learned on Dn with hp lambda
+\newcommand{\fhDlambda}{\fh_{\D, \lambdav}}                                       %model learned on D with hp lambda
+\newcommand{\fhDnlambdastar}{\fh_{\Dn, \lambdav^\ast}}                                       %model learned on Dn with optimal hp lambda 
+\newcommand{\fhDlambdastar}{\fh_{\D, \lambdav^\ast}}                                       %model learned on D with optimal hp lambda 
 
 % discrete prediction function h
 \newcommand{\hx}{h(\mathbf{x})}                                                      % h(x), discrete prediction function
@@ -69,8 +71,6 @@
 \newcommand{\hxt}{h(\mathbf{x} | \bm{\theta})}                                            % h(x | theta)
 \newcommand{\hxi}{h\left(\xi\right)}                                        % h(x^(i))
 \newcommand{\hxit}{h\left(\xi ~|~ \bm{\theta}\right)}                          % h(x^(i) | theta)
-\newcommand{\hbayes}{h^\ast} % The Bayes optimal model
-\newcommand{\hxbayes}{h^\ast(\mathbf{x})} % The Bayes optimal model
 
 % yhat
 \newcommand{\yh}{\hat{y}}                                                   % yhat for prediction of target
@@ -82,7 +82,8 @@
 \newcommand{\thetabh}{\bm{\hat\theta}}											% theta vector
 \newcommand{\thetat}{\bm{\theta}^{[t]}}											% theta^[t] in optimization
 \newcommand{\thetatn}{\bm{\theta}^{[t+1]}}					        			% theta^[t+1] in optimization
-
+\newcommand{\thetahDnlambda}{\thetah_{\Dn, \lambdav}}             %theta learned on Dn with hp lambda
+\newcommand{\thetahDlambda}{\thetah_{\D, \lambdav}}             %theta learned on D with hp lambda
 % densities + probabilities
 % pdf of x 
 \newcommand{\pdf}{p}                                                        % p
@@ -109,12 +110,7 @@
 
 % posterior probabilities
 \newcommand{\post}{\P(y = 1 ~|~ \mathbf{x})}                                           % P(y = 1 | x), post. prob for y=1
-\newcommand{\pix}{\pi(\mathbf{x})}
-                                                   % pi(x), P(y = 1 | x)
-\newcommand{\pibayes}{\pi^\ast} % The Bayes optimal model
-\newcommand{\pixbayes}{\pi^\ast(\mathbf{x})} % The Bayes optimal model
-
-
+\newcommand{\pix}{\pi(\mathbf{x})}                                                   % pi(x), P(y = 1 | x)
 \newcommand{\postk}{\P(y = k ~|~ \mathbf{x})}                                          % P(y = k | y), post. prob for y=k
 \newcommand{\pikx}{\pi_k(\mathbf{x})}                                                % pi_k(x), P(y = k | x)
 \newcommand{\pikxt}{\pi_k(\mathbf{x} ~|~ \bm{\theta})}                                      % pi_k(x | theta), P(y = k | x, theta)
@@ -124,7 +120,6 @@
 \newcommand{\pdfyigxit}{p\left(\yi ~|~\xi, \bm{\theta}\right)}                     % p(y^i |x^i, theta)
 \newcommand{\lpdfygxt}{\log \pdfygxt }                                      % log p(y | x, theta)
 \newcommand{\lpdfyigxit}{\log \pdfyigxit}                                   % log p(y^i |x^i, theta)
-\newcommand{\pih}{\hat{\pi}}												% pi hat, estimated 
 \newcommand{\pixh}{\hat \pi(\mathbf{x})}                                             % pi(x) hat, P(y = 1 | x) hat
 \newcommand{\pikxh}{\hat \pi_k(\mathbf{x})}                                          % pi_k(x) hat, P(y = k | x) hat
 \newcommand{\pixih}{\hat \pi(\xi)}                                      % pi(x^(i)) with hat
@@ -133,9 +128,6 @@
 % residual and margin
 \newcommand{\eps}{\epsilon}                                                 % residual, stochastic
 \newcommand{\epsi}{\epsilon^{(i)}}                                          % epsilon^i, residual, stochastic
-\newcommand{\res}{r}                                                 % residual, empirical
-\newcommand{\resi}{r^{(i)}}                                          % epsilon^i, residual, empirical
-
 \newcommand{\epsh}{\hat{\epsilon}}                                          % residual, estimated
 \newcommand{\yf}{y \fx}                                                     % y f(x), margin
 \newcommand{\yfi}{\yi \fxi}                                                 % y^i f(x^i), margin
@@ -148,7 +140,6 @@
 \newcommand{\Lxyi}{L\left(\yi, \fxi\right)}                                 % L(y^i, f(x^i))
 \newcommand{\Lxyt}{L\left(y, \fxt\right)}                                   % L(y, f(x | theta))
 \newcommand{\Lxyit}{L\left(\yi, \fxit\right)}                               % L(y^i, f(x^i | theta)
-\newcommand{\Lxyitt}{L\left(\yi, f\left(\xv~|~\thetat\right)\right)}                               % L(y^i, f(x^i | theta^[t])
 \newcommand{\Lxym}{L\left(\yi, f\left(\bm{\tilde{x}}^{(i)} ~|~ \bm{\theta}\right)\right)}                      % L(y^i, f(tilde(x)^i | theta), 
 \newcommand{\Lpixy}{L\left(y, \pix\right)}                                  % L(y, pi(x)), loss function
 \newcommand{\Lpixyi}{L\left(\yi, \pixii\right)}                             % L(y^i, pi(x^i))
@@ -171,9 +162,6 @@
 \newcommand{\riskrf}{\riskr(f)}                                             % R_reg(f)
 \newcommand{\riskrth}{\hat{\mathcal{R}}_{\text{reg}}(\bm{\theta})}              % hat R_reg(theta)
 \newcommand{\risketh}{\hat{\mathcal{R}}_{\text{emp}}(\bm{\theta})}			  % hat R_emp(theta)
-\newcommand{\riskbayes}{\mathcal{R}^\ast}
-
-
 \newcommand{\LL}{\mathcal{L}}                                               % L, likelihood
 \newcommand{\LLt}{\mathcal{L}(\bm{\theta})}                                      % L(theta), likelihood
 \renewcommand{\ll}{\ell}                                                    % l, log-likelihood
@@ -188,20 +176,63 @@
 
 
 % resampling
-\newcommand{\GEf}{GE\left(\fh\right)}                             		% Generalization error of a fitted model
+\newcommand{\ntest}{n_{\mathrm{test}}}                              % size of the test set
+\newcommand{\ntrain}{n_{\mathrm{train}}}                            % size of the train set
+\newcommand{\ntesti}[1][i]{n_{\mathrm{test},#1}}                    % size of the i-th test set
+\newcommand{\ntraini}[1][i]{n_{\mathrm{train},#1}}                  % size of the i-th train set
+\newcommand{\Jtrain}{J_\mathrm{train}}                              % index vector associated to the train data
+\newcommand{\Jtest}{J_\mathrm{test}}                                % index vector associated to the test data
+\newcommand{\Jtraini}[1][i]{J_{\mathrm{train},#1}}                  % index vector associated to the i-th train dataset
+\newcommand{\Jtesti}[1][i]{J_{\mathrm{test},#1}}                    % index vector associated to the i-th test dataset
+\newcommand{\Dtraini}[1][i]{\mathcal{D}_{\text{train},#1}}          % D_train,i, i-th training set
+\newcommand{\Dtesti}[1][i]{\mathcal{D}_{\text{test},#1}}            % D_test,i, i-th test set
+
+\newcommand{\JtrainSpace}{\{1,\dots,n\}^{\ntrain}}                  % space of train indices of size m_train
+\newcommand{\JtestSpace}{\{1,\dots,n\}^{\ntest}}                    % space of train indices of size m_test
+\newcommand{\yJ}[1][J]{\yv_{#1}}                                    % output vector associated to index J
+\newcommand{\yJDef}{\left(y^{(J^{(1)})},\dots,y^{(J^{(m)})}\right)} % def of the output vector associated to index J
+\newcommand{\JJ}{\mathcal{J}}                                       % cali-J, set of all splits
+\newcommand{\JJset}{\left((\Jtraini[1], \Jtesti[1]),\dots,(\Jtraini[B], \Jtesti[B])\right)}
+                                                            % (Jtrain_1,Jtest_1) ...(Jtrain_B,Jtest_B)
+
+% Generalization error
+\newcommand{\GEh}{\widehat{\mathrm{GE}}}                                             % GE-hat 
+\newcommand{\GEfull}[1][\ntrain]{\mathrm{GE}(\inducer, \lambdav, #1, \rho)}          % GE(I, lam, ?, rho)
+\newcommand{\GEhholdout}{\GEh_{\Jtrain, \Jtest}(\inducer, \lambdav, |\Jtrain|, \rho)}    % GE-hat_{Jtrain,Jtest} (I, lam, |J|, rho)
+\newcommand{\GEhholdouti}[1][i]{\GEh_{\Jtraini[#1], \Jtesti[#1]}(\inducer, \lambdav, |\Jtraini[#1]|, \rho)}           
+                                                                                     % GE-hat_{Jtrain_i,Jtest_i} (I, lam, |Jtrain_i|, rho)
+\newcommand{\GEhlam}{\GEh(\lambdav)}                                                 % GE-hat(lam) 
+\newcommand{\GEhlamsubIJrho}{\GEh_{\inducer, \JJ, \rho}(\lambdav)}                   % GE-hat_I,J,rho(lam) 
+\newcommand{\GEhresa}{\GEh(\inducer, \JJ, \rho, \lambdav)}                   % GE-hat_I,J,rho(lam) 
+
+\newcommand{\GErhoDef}{\lim_{\ntest\rightarrow\infty} \E \left[ \rho\left(\yv_{\Jtest}, \FJtestftrain\right)\right]}
+
+
+\newcommand{\agr}{\mathrm{agr}}                       % aggregate function
+\newcommand{\GEf}{\mathrm{GE}\left(\fh\right)}                             		% Generalization error of a fitted model
 \newcommand{\GEind}{GE_n\left(\inducer_{L, O}\right)}                             		% Generalization error of a fitted model
 \newcommand{\GE}[1]{GE_n\left(\fh_{#1}\right)}                             % Generalization error GE
-\newcommand{\GEh}[1]{\widehat{GE}_{#1}}                                     % Estimated train error
+\newcommand{\GEhat}{\widehat{\mathrm{GE}}}                                  % Estimated train error
 \newcommand{\GED}{\GE{\D}}                                                  % Generalization error GE
 \newcommand{\EGEn}{EGE_n}                                                   % Generalization error GE
 \newcommand{\EDn}{\E_{|D| = n}}                                             % Generalization error GE
 
-
+% performance measure
+\newcommand{\rhoL}{\rho_L}                 % perf. measure derived from pointwise loss function L
+\newcommand{\F}{\boldsymbol{F}}             % matrix of prediction scores
+\newcommand{\Fi}[1][i]{\F^{(#1)}}             % i'th row vector of the prediction scores matrix
+\newcommand{\FJ}[1][J]{\F_{#1}}             % prediction scores matrix regarding index vector J 
+\newcommand{\FJf}{\FJ[J,f]}             % prediction scores matrix regarding index vector J and model f
+\newcommand{\FJtestfh}{\FJ[\Jtest, \fh]}      % prediction scores matrix regarding index vector Jtest and model f hat
+\newcommand{\FJtestftrain}{\F_{\Jtest,\inducer(\Dtrain, \lambdav)}}             % prediction scores matrix regarding index vector Jtest and model f
+\newcommand{\FJtestftraini}[1][i]{\F_{\Jtesti[#1],\inducer(\Dtraini[#1], \lambdav)}}             % prediction scores matrix regarding i-th index vector Jtest and model f
+\newcommand{\FJfDef}{\left(f(\xv^{(J^{(1)})}),\dots, f(\xv^{(J^{(m)})})\right)}                        % def of the prediction scores matrix regarding index vector J and model f
+\newcommand{\preimageRho}{\bigcup_{m\in\N}\left(\Yspace^m\times\R^{m\times g}\right)}     % Set of all datasets times the hyperparameter space
 
 
 % ml - irace
 \newcommand{\costs}{\mathcal{C}} 											% costs
-\newcommand{\Celite}{\theta^*} 												% elite configurations
+\newcommand{\Celite}{\thetab^\ast} 												% elite configurations
 \newcommand{\instances}{\mathcal{I}} 										% sequence of instances
 \newcommand{\budget}{\mathcal{B}} 											% computational budget
 
