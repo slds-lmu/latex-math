@@ -1,0 +1,37 @@
+%%% HPO Basics 
+\newcommand{\Ilam}{\inducer_{\lamv}}						% I_lambda
+\newcommand{\lami}[1][i]{\lamv^{(#1)}}  
+\newcommand{\clam}{c(\lamv)}                             % c(lambda)
+\newcommand{\clamh}{c(\lamh)}                               % c(lambda-hat)
+\newcommand{\lams}{\lamv^{*}}		                    % Theoretical min of c
+\newcommand{\lamh}{\hat{\lamv}}		                    % returned lambda of HPO
+\newcommand{\LamS}{\tilde\Lam}                           % search space
+\newcommand{\lamp}{\lamv^+}                              % proposed lambda
+\newcommand{\clamp}{c(\lamp)}                               % c of proposed lambda
+\newcommand{\archive}{\mathcal{A}}                          % archive at time step t
+\newcommand{\archivet}[1][t]{\mathcal{A}^{[#1]}}            % archive at time step t
+
+\newcommand{\tuner}{\mathcal{T}}                            % tuner
+\newcommand{\tunerfull}{\tuner_{\inducer,\LamS, \rho,\JJ}}
+     % tuner with inducer, search space, performance measure and resampling strategy
+
+%%% Bayesian Opt
+\newcommand{\chlam}{\hat{c}(\lamv)}                       % post mean of SM 
+\newcommand{\shlam}{\hat{\sigma}(\lamv)}                  % post sd of SM
+\newcommand{\vhlam}{\hat{\sigma^2}(\lamv)}                % post var of SM
+\newcommand{\ulam}{u(\lamv)}                              % acquisition function
+\newcommand{\lambdaopt}{\lambda^{*}}											% Minimum of the black box function Psi
+\newcommand{\metadata}{\left\{\left(\lami, \Psi^{[i]}\right)\right\}}		% Metadata for the Gaussian process
+\newcommand{\lamvec}{\left(\lambda^{[1]}, \dots, \lambda^{[\minit]}\right)}  % Vector of different inputs
+\newcommand{\kstarx}{\mathbf{k}_*(x)}
+\newcommand{\minit}{m_{\text{init}}}											% Size of the initial design
+
+%%% Multifidelity / Hyperband
+\newcommand{\lambu}{\lambda_{\text{budget}}}                 % single lambda_budget komponent HP
+\newcommand{\etahb}{\eta_{\text{HB}}}                        % HB multiplier eta
+
+% ml - irace
+\newcommand{\costs}{\mathcal{C}} 											% costs
+\newcommand{\Celite}{\thetab^\ast} 												% elite configurations
+\newcommand{\instances}{\mathcal{I}} 										% sequence of instances
+\newcommand{\budget}{\mathcal{B}} 											% computational budget 
