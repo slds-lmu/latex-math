@@ -1,16 +1,16 @@
 % ml - MBO
 \newcommand{\sxh}{\hat{s}(x)} % uncertainty shat(x)
-\newcommand{\vxh}{\hat{s}^2(x)}
-\newcommand{\matK}{\mathbf{K}}
-\newcommand{\kstarx}{\mathbf{k}_*(x)}
-\newcommand{\xpi}[1][i]{x^{*(#1)}}
+\newcommand{\vxh}{\hat{s}^2(x)} %squared uncertanty
+\newcommand{\matK}{\mathbf{K}} % ??
+\newcommand{\kstarx}{\mathbf{k}_*(x)} % ??
+\newcommand{\xpi}[1][i]{x^{*(#1)}}  % ??
 \newcommand{\vhx}{\ensuremath{\sh^2(\xv)}\xspace}          % local estimated variance at point x
 \newcommand{\shx}{\ensuremath{\sh(\xv)}\xspace}            % local estimated uncertainty at point x
 \newcommand{\sh}{\ensuremath{\hat{s}}\xspace}              % local estimated uncertainty
-\newcommand{\px}{\ensuremath{\boldsymbol{x}^*}}
-\newcommand{\equote}[1]{``#1''}
-\newcommand{\vecx}{\ensuremath{\boldsymbol{x}}}
-\newcommand{\yx}{\ensuremath{y(\vecx)}}
+\newcommand{\px}{\ensuremath{\boldsymbol{x}^*}} % ??
+\newcommand{\equote}[1]{``#1''} % ??
+\newcommand{\vecx}{\ensuremath{\boldsymbol{x}}} % DO NOT USE THIS
+\newcommand{\yx}{\ensuremath{y(\vecx)}} % ??
 \newcommand{\X}{\ensuremath{\mathcal{X}}\xspace}           % domain / search space
 
 % already defined in basic-math:
@@ -18,11 +18,12 @@
 \newcommand{\fhx}{\ensuremath{\fh(\xv)}\xspace}            % surrogate (x), better use \mhx for predicted value
 
 
+% rm'ed duplicate definitions that are already defined in ml-bayesopt.tex
 
-\newcommand{\minit}{m_{\text{init}}}											% Size of the initial design
-\newcommand{\lambdai}{\lambdab^{[i]}}											% input for black box optimization 
+% \newcommand{\minit}{m_{\text{init}}}											% Size of the initial design
+% \newcommand{\lambdai}{\lambdab^{[i]}}											% input for black box optimization
 \newcommand{\lambdanew}{\lambdab^{\text{new}}}								% new proposed configuration
-\newcommand{\metadata}{\left\{\left(\lambdai, \Psi^{[i]}\right)\right\}}		% Metadata for the Gaussian process
-\newcommand{\lambdavec}{\lambdab^{[1]}, ..., \lambdab^{[\minit]}}  % Vector of different inputs
-\newcommand{\lambdab}{\boldsymbol{\lambda}}									% input 
-\newcommand{\lambdaopt}{\lambdab^{*}}											% Minimum of the black box function Psi
+% \newcommand{\metadata}{\left\{\left(\lambdai, \Psi^{[i]}\right)\right\}}		% Metadata for the Gaussian process
+% \newcommand{\lambdavec}{\lambdab^{[1]}, ..., \lambdab^{[\minit]}}  % Vector of different inputs
+% \newcommand{\lambdab}{\boldsymbol{\lambda}}									% input
+% \newcommand{\lambdaopt}{\lambdab^{*}}											% Minimum of the black box function Psi
