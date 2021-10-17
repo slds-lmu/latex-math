@@ -98,7 +98,7 @@ names(macros) <- texfiles
 ```
 
 ```{r print-macros, results='asis', echo = FALSE}
-cat("\\tableofcontents \\newpage")
+cat("\\tableofcontents \\label{toc} \\newpage")
 
 for (i in seq_along(macros)) {
   cat("\\section{",  stringr::str_remove(names(macros)[i], ".tex"), "} ")
@@ -108,6 +108,7 @@ for (i in seq_along(macros)) {
                 floating = FALSE,
                 tabular.environment = "longtable",
                 comment = FALSE)
+  cat("\\hyperlink{toc}{Back to contents}")
   cat("\\newpage")
 }
 ```
