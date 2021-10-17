@@ -11,25 +11,22 @@ header-includes:
    - \usepackage{dsfont}
    - \usepackage{xspace}
    - \usepackage{longtable}
-   - \input{basic-ml.tex}
-   - \input{basic-math.tex}
-   # - \input{ml-automl.tex}
-   - \input{ml-bagging.tex}
-   # - \input{ml-bayesopt.tex}
-   - \input{ml-boosting.tex}
-   - \input{ml-eval.tex}
-   - \input{ml-feature-sel.tex}
-   - \input{ml-gp.tex}
-   - \input{ml-hpo.tex}
-   - \input{ml-interpretable.tex}
-   - \input{ml-lm.tex}
-   # - \input{ml-mbo.tex}
-   - \input{ml-nn.tex}
-   - \input{ml-rf.tex}
-   - \input{ml-survival.tex}
-   - \input{ml-svm.tex}
-   - \input{ml-trees.tex}
-   - \input{probmodel.tex
+   # - \input{basic-ml.tex}
+   # - \input{basic-math.tex}
+   # - \input{ml-bagging.tex}
+   # - \input{ml-boosting.tex}
+   # - \input{ml-eval.tex}
+   # - \input{ml-feature-sel.tex}
+   # - \input{ml-gp.tex}
+   # - \input{ml-hpo.tex}
+   # - \input{ml-interpretable.tex}
+   # - \input{ml-lm.tex}
+   # - \input{ml-nn.tex}
+   # - \input{ml-rf.tex}
+   # - \input{ml-survival.tex}
+   # - \input{ml-svm.tex}
+   # - \input{ml-trees.tex}
+   # - \input{probmodel.tex}
 editor_options: 
   chunk_output_type: console
 ---
@@ -39,6 +36,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(purrr)
 library(xtable)
+library(stringr)
 ```
 
 <!-- Run this file with rmarkdown::render() to recreate the tables.  -->
@@ -76,9 +74,9 @@ get_command <- function(line) {
   command
 }
 
-texfiles <- list.files(pattern = "\\.tex$")
+# texfiles <- list.files(pattern = "\\.tex$")
+texfiles <- "basic-math.tex"
 texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
-texfiles <- "ml-boosting.tex"
 macros <- texfiles %>% 
   map(~ readLines(.)) %>% 
   map_depth(.depth = 2, ~ get_command(.)) %>% 
@@ -88,9 +86,10 @@ names(macros) <- texfiles
 ```
 
 ```{r print-macros, results='asis', echo = FALSE}
+cat("\\tableofcontents \\newpage")
+
 for (i in seq_along(macros)) {
-  cat("\\section{",  names(macros)[i], "} ")
-  cat(macros[[i]])
+  cat("\\section{",  stringr::str_remove(names(macros)[i], ".tex"), "} ")
   null <- print(xtable(macros[[i]]),
                 sanitize.text.function = I,
                 include.rownames = FALSE,
