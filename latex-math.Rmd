@@ -55,22 +55,32 @@ sanitize_command <- function(command) {
          "$")
 }
 get_command <- function(line) {
+  
   #see https://www.regular-expressions.info/recurse.html#balanced
-  command <- regmatches(line, 
-                        gregexpr("\\{(?>[^{}]|(?R))*\\}", 
-                                 line, perl = TRUE)
-                        )[[1]]
+  
+  # avoid double appearance for ifdefined-renewcommand-else-newcommand
+  if (grepl("renewcommand", line)) return(NULL)
+  
+  command <- regmatches(
+    line,
+    gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl = TRUE))[[1]]
+  
   if (length(command) != 2) return(NULL)
-  command[3] <- stringr::str_match(line, 
-                          pattern = "\\}\\s*%\\s*(.*)$")[-1]
+  
+  command[3] <- stringr::str_match(
+    line,
+    pattern = "\\}\\s*%\\s*(.*)$")[-1]
+  
   names(command) <- c("Macro", "Notation", "Comment")
+  
   command[1] <- substr(command[1], 2, nchar(command[1])-1)
-  if (grepl("IGNORE_NOTATION", command[3])) {
-    command[2] <- ""
-  }
+  
+  if (grepl("IGNORE_NOTATION", command[3])) command[2] <- ""
+  
   command[1] <- paste0("\\verb!", command[1], "!")
   command[2] <- sanitize_command(command[2])
   command[3] <- xtable::sanitize(command[3])
+  
   command
 }
 
