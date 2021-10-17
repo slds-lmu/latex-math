@@ -13,20 +13,19 @@ header-includes:
    - \usepackage{longtable}
    - \input{basic-ml.tex}
    - \input{basic-math.tex}
-   # - \input{ml-bagging.tex}
-   # - \input{ml-boosting.tex}
-   # - \input{ml-eval.tex}
-   # - \input{ml-feature-sel.tex}
-   # - \input{ml-gp.tex}
-   # - \input{ml-hpo.tex}
-   # - \input{ml-interpretable.tex}
-   # - \input{ml-lm.tex}
-   # - \input{ml-nn.tex}
-   # - \input{ml-rf.tex}
-   # - \input{ml-survival.tex}
-   # - \input{ml-svm.tex}
-   # - \input{ml-trees.tex}
-   # - \input{probmodel.tex}
+   - \input{ml-bagging.tex}
+   - \input{ml-boosting.tex}
+   - \input{ml-eval.tex}
+   - \input{ml-feature-sel.tex}
+   - \input{ml-gp.tex}
+   - \input{ml-hpo.tex}
+   - \input{ml-interpretable.tex}
+   - \input{ml-nn.tex}
+   - \input{ml-rf.tex}
+   - \input{ml-survival.tex}
+   - \input{ml-svm.tex}
+   - \input{ml-trees.tex}
+   - \input{probmodel.tex}
 editor_options: 
   chunk_output_type: console
 ---
@@ -77,7 +76,9 @@ get_command <- function(line) {
   
   command[1] <- substr(command[1], 2, nchar(command[1]) - 1)
   
-  if (grepl("IGNORE_NOTATION", command[3])) command[2] <- ""
+  if (grepl("IGNORE_NOTATION", command[3])) {
+    command[2] <- ""
+    command[3] <- stringr::str_remove(command[3], "IGNORE_NOTATION")}
   
   command[1] <- paste0("\\verb!", command[1], "!")
   command[2] <- sanitize_command(command[2])
@@ -86,8 +87,7 @@ get_command <- function(line) {
   command
 }
 
-# texfiles <- list.files(pattern = "\\.tex$")
-texfiles <- c("basic-math.tex", "basic-ml.tex")
+texfiles <- list.files(pattern = "\\.tex$")
 texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
 macros <- texfiles %>% 
   map(~ readLines(.)) %>% 
@@ -109,6 +109,6 @@ for (i in seq_along(macros)) {
                 tabular.environment = "longtable",
                 comment = FALSE)
   cat("\\hyperlink{toc}{Back to contents}")
-  cat("\\newpage")
+  cat("\\vspace{2cm}")
 }
 ```
