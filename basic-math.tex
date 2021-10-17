@@ -1,81 +1,79 @@
 % math spaces
-\ifdefined\N                                                                % N, naturals
-\renewcommand{\N}{\mathds{N}}                                                % N defined by "siunitx" (which we use), for "NEWTON"
+\ifdefined\N                                                                
+\renewcommand{\N}{\mathds{N}} % N defined by "siunitx" (which we use), for "NEWTON"
 \else
-  \newcommand{\N}{\mathds{N}}
+  \newcommand{\N}{\mathds{N}} % N, naturals
 \fi
-\newcommand{\Z}{\mathds{Z}}                                                 % Z, integers
-\newcommand{\Q}{\mathds{Q}}                                                 % Q, rationals
-\newcommand{\R}{\mathds{R}}                                                 % R, reals
+\newcommand{\Z}{\mathds{Z}} % Z, integers
+\newcommand{\Q}{\mathds{Q}} % Q, rationals
+\newcommand{\R}{\mathds{R}} % R, reals
 \ifdefined\C
-  \renewcommand{\C}{\mathds{C}}                                             % C, complex
+  \renewcommand{\C}{\mathds{C}} 
 \else
-  \newcommand{\C}{\mathds{C}}
+  \newcommand{\C}{\mathds{C}} % C, complex
 \fi
-\newcommand{\continuous}{\mathcal{C}}                                       % C, space of continuous functions
-\newcommand{\M}{\mathcal{M}} 												% machine numbers
-\newcommand{\epsm}{\epsilon_m} 												% maximum error
+\newcommand{\continuous}{\mathcal{C}} % C, space of continuous functions
+\newcommand{\M}{\mathcal{M}} % machine numbers
+\newcommand{\epsm}{\epsilon_m} % maximum error
 
 % counting / finite sets
-\newcommand{\setn}{\{1, \ldots, n\}} 											% {1, ..., n}
-\newcommand{\setp}{\{1, \ldots, p\}}											% {1, ..., p}
-\newcommand{\setg}{\{1, \ldots, g\}}											% {1, ..., g}
-\newcommand{\setzo}{\{0, 1\}} 		        			    				% {0, 1}
-\newcommand{\setmp}{\{-1, +1\}}     				    					% {-1, 1}
+\newcommand{\setn}{\{1, \ldots, n\}} % {1, ..., n}
+\newcommand{\setp}{\{1, \ldots, p\}} % {1, ..., p}
+\newcommand{\setg}{\{1, \ldots, g\}} % {1, ..., g}
+\newcommand{\setzo}{\{0, 1\}} % {0, 1}
+\newcommand{\setmp}{\{-1, +1\}} % {-1, 1}
 
 
 % basic math stuff
-\newcommand{\xt}{\tilde x}													% x tilde
-\def\argmax{\mathop{\sf arg\,max}}                                          % argmax
-\def\argmin{\mathop{\sf arg\,min}}                                          % argmin
-\newcommand{\sign}{\operatorname{sign}}                                     % sign, signum
-\newcommand{\I}{\mathbb{I}}                                                 % I, indicator
-\newcommand{\Ind}{\mathds{1}}                                               % 1, indicator
-\newcommand{\order}{\mathcal{O}}                                            % O, order
-\newcommand{\fp}[2]{\frac{\partial #1}{\partial #2}}                        % partial derivative
-\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial #2}}						% partial derivative
+\newcommand{\xt}{\tilde x} % x tilde
+\def\argmax{\mathop{\sf arg\,max}} % argmax
+\def\argmin{\mathop{\sf arg\,min}} % argmin
+\newcommand{\sign}{\operatorname{sign}} % sign, signum
+\newcommand{\I}{\mathbb{I}} % I, indicator
+\newcommand{\Ind}{\mathds{1}} % 1, indicator
+\newcommand{\order}{\mathcal{O}} % O, order
+\newcommand{\fp}[2]{\frac{\partial #1}{\partial #2}} % partial derivative
+\newcommand{\pd}[2]{\frac{\partial{#1}}{\partial #2}} % partial derivative
 
 % sums and products
-\newcommand{\sumin}{\sum\limits_{i=1}^n}											% summation from i=1 to n
-\newcommand{\sumjp}{\sum\limits_{j=1}^p}											% summation from j=1 to p
-\newcommand{\sumik}{\sum\limits_{i=1}^k}											% summation from i=1 to k
-\newcommand{\sumkg}{\sum\limits_{k=1}^g}											% summation from k=1 to g
-\newcommand{\sumjg}{\sum\limits_{j=1}^g}											% summation from j=1 to g
-\newcommand{\meanin}{\frac{1}{n} \sum\limits_{i=1}^n}			    				% mean from i=1 to n
-\newcommand{\meankg}{\frac{1}{g} \sum\limits_{k=1}^g}			    				% mean from k=1 to g
-\newcommand{\prodin}{\prod\limits_{i=1}^n}											% product from i=1 to n
-\newcommand{\prodkg}{\prod\limits_{k=1}^g}											% product from k=1 to g
-\newcommand{\prodjp}{\prod\limits_{j=1}^p}											% product from j=1 to p
+\newcommand{\sumin}{\sum\limits_{i=1}^n} % summation from i=1 to n
+\newcommand{\sumjp}{\sum\limits_{j=1}^p} % summation from j=1 to p
+\newcommand{\sumik}{\sum\limits_{i=1}^k} % summation from i=1 to k
+\newcommand{\sumkg}{\sum\limits_{k=1}^g} % summation from k=1 to g
+\newcommand{\sumjg}{\sum\limits_{j=1}^g} % summation from j=1 to g
+\newcommand{\meanin}{\frac{1}{n} \sum\limits_{i=1}^n} % mean from i=1 to n
+\newcommand{\meankg}{\frac{1}{g} \sum\limits_{k=1}^g} % mean from k=1 to g
+\newcommand{\prodin}{\prod\limits_{i=1}^n} % product from i=1 to n
+\newcommand{\prodkg}{\prod\limits_{k=1}^g} % product from k=1 to g
+\newcommand{\prodjp}{\prod\limits_{j=1}^p} % product from j=1 to p
 
 % linear algebra
-\newcommand{\one}{\boldsymbol{1}}                                           % 1, unitvector
-\newcommand{\zero}{\mathbf{0}}													% 0-vector
-\newcommand{\id}{\boldsymbol{I}}                                                % I, identity
-\newcommand{\diag}{\operatorname{diag}}                                     % diag, diagonal
-\newcommand{\trace}{\operatorname{tr}}                                      % tr, trace
-\newcommand{\spn}{\operatorname{span}}                                      % span
-\newcommand{\scp}[2]{\left\langle #1, #2 \right\rangle}                     % <.,.>, scalarproduct
-\newcommand{\mat}[1]{ 														% short pmatrix command
+\newcommand{\one}{\boldsymbol{1}} % 1, unitvector
+\newcommand{\zero}{\mathbf{0}} % 0-vector
+\newcommand{\id}{\boldsymbol{I}} % I, identity
+\newcommand{\diag}{\operatorname{diag}} % diag, diagonal
+\newcommand{\trace}{\operatorname{tr}} % tr, trace
+\newcommand{\spn}{\operatorname{span}} % span
+\newcommand{\scp}[2]{\left\langle #1, #2 \right\rangle} % <.,.>, scalarproduct
+\newcommand{\mat}[1]{ % short pmatrix command
 	\begin{pmatrix}
 		#1
 	\end{pmatrix}
 }
-\newcommand{\Amat}{\mathbf{A}}													% matrix A
-\newcommand{\xv}{\mathbf{x}}													% vector x (bold)
-\newcommand{\xtil}{\tilde{\mathbf{x}}}								       		% vector x-tilde (bold)
-\newcommand{\xb}{\mathbf{x}}													% WE SHOULD NOT USE THIS 
-                                                                                % ANYMORE  
-\newcommand{\yv}{\mathbf{y}}													% vector y (bold)
-\newcommand{\Deltab}{\mathbf{\Delta}}											% error term for vectors
+\newcommand{\Amat}{\mathbf{A}} % matrix A
+\newcommand{\xv}{\mathbf{x}} % vector x (bold)
+\newcommand{\xtil}{\tilde{\mathbf{x}}} % vector x-tilde (bold)
+\newcommand{\yv}{\mathbf{y}} % vector y (bold)
+\newcommand{\Deltab}{\mathbf{\Delta}} % error term for vectors
 
 
 % basic probability + stats
-\renewcommand{\P}{\mathds{P}}                                               % P, probability
-\newcommand{\E}{\mathds{E}}                                                 % E, expectation
-\newcommand{\var}{\mathsf{Var}}                                             % Var, variance
-\newcommand{\cov}{\mathsf{Cov}}                                             % Cov, covariance
-\newcommand{\corr}{\mathsf{Corr}}                                           % Corr, correlation
-\newcommand{\normal}{\mathcal{N}}                                           % N of the normal distribution
-\newcommand{\iid}{\overset{i.i.d}{\sim}}                                    % dist with i.i.d superscript
-\newcommand{\distas}[1]{\overset{#1}{\sim}}                                 % ... is distributed as ...
-\newcommand{\ind}{\perp}                                                    %_|_, ... is independent of ...
+\renewcommand{\P}{\mathds{P}} % P, probability
+\newcommand{\E}{\mathds{E}} % E, expectation
+\newcommand{\var}{\mathsf{Var}} % Var, variance
+\newcommand{\cov}{\mathsf{Cov}} % Cov, covariance
+\newcommand{\corr}{\mathsf{Corr}} % Corr, correlation
+\newcommand{\normal}{\mathcal{N}} % N of the normal distribution
+\newcommand{\iid}{\overset{i.i.d}{\sim}} % dist with i.i.d superscript
+\newcommand{\distas}[1]{\overset{#1}{\sim}} % ... is distributed as ...
+\newcommand{\ind}{\perp} % ... is independent of ...

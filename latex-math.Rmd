@@ -100,6 +100,7 @@ cat("\\tableofcontents \\newpage")
 
 for (i in seq_along(macros)) {
   cat("\\section{",  stringr::str_remove(names(macros)[i], ".tex"), "} ")
+  cat("\\large")
   null <- print(xtable(macros[[i]]),
                 sanitize.text.function = I,
                 include.rownames = FALSE,
