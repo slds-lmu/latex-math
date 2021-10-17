@@ -11,8 +11,8 @@ header-includes:
    - \usepackage{dsfont}
    - \usepackage{xspace}
    - \usepackage{longtable}
-   # - \input{basic-ml.tex}
-   # - \input{basic-math.tex}
+   - \input{basic-ml.tex}
+   - \input{basic-math.tex}
    # - \input{ml-bagging.tex}
    # - \input{ml-boosting.tex}
    # - \input{ml-eval.tex}
@@ -43,6 +43,8 @@ library(stringr)
 
 Latex macros like `\frac{#1}{#2}` with arguments are displayed as $\frac{\#1}{\#2}$.
 
+Note that macro declarations may only span a single line to be displayed correctly in the below tables.
+
 
 ```{r get-macros, echo = FALSE, warning = FALSE}
 # escape the "#"-sign for latex macros with arguments
@@ -51,7 +53,7 @@ sanitize_command <- function(command) {
          stringr::str_replace_all(
            command, 
            pattern = "#([1-9])",
-           replacement = "{\\\\#\\1}"), 
+           replacement =  "{\\\\cdot}"), 
          "$")
 }
 get_command <- function(line) {
@@ -73,7 +75,7 @@ get_command <- function(line) {
   
   names(command) <- c("Macro", "Notation", "Comment")
   
-  command[1] <- substr(command[1], 2, nchar(command[1])-1)
+  command[1] <- substr(command[1], 2, nchar(command[1]) - 1)
   
   if (grepl("IGNORE_NOTATION", command[3])) command[2] <- ""
   
@@ -85,7 +87,7 @@ get_command <- function(line) {
 }
 
 # texfiles <- list.files(pattern = "\\.tex$")
-texfiles <- "basic-math.tex"
+texfiles <- c("basic-math.tex", "basic-ml.tex")
 texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
 macros <- texfiles %>% 
   map(~ readLines(.)) %>% 
@@ -100,7 +102,6 @@ cat("\\tableofcontents \\newpage")
 
 for (i in seq_along(macros)) {
   cat("\\section{",  stringr::str_remove(names(macros)[i], ".tex"), "} ")
-  cat("\\large")
   null <- print(xtable(macros[[i]]),
                 sanitize.text.function = I,
                 include.rownames = FALSE,
