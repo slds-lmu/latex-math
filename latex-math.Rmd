@@ -24,7 +24,6 @@ header-includes:
    - \input{ml-survival.tex}
    - \input{ml-svm.tex}
    - \input{ml-trees.tex}
-   - \input{probmodel.tex}
 editor_options: 
   chunk_output_type: console
 ---

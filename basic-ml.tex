@@ -101,7 +101,6 @@
 \newcommand{\pdfxyk}[1][k]{p(\xv | y= #1)} % p(x | y = k)
 \newcommand{\lpdfxyk}[1][k]{\log p(\xv | y= #1)} % log p(x | y = k)
 \newcommand{\pdfxiyk}[1][k]{p\left(\xi | y= #1 \right)} % p(x^i | y = k)
-\newcommand{\bayesrulek}[1][k]{\frac{\P(\xv | y= #1) \P(y= #1)}{\P(\xv)}} % Bayes rule
 
 % prior probabilities
 \newcommand{\pik}[1][k]{\pi_{#1}} % pi_k, prior
@@ -123,6 +122,10 @@
 \newcommand{\pdfyigxit}{p\left(\yi ~|~\xi, \thetab\right)} % p(y^i |x^i, theta)
 \newcommand{\lpdfygxt}{\log \pdfygxt } % log p(y | x, theta)
 \newcommand{\lpdfyigxit}{\log \pdfyigxit} % log p(y^i |x^i, theta)
+
+% probababilistic
+\newcommand{\bayesrulek}[1][k]{\frac{\P(\xv | y= #1) \P(y= #1)}{\P(\xv)}} % Bayes rule
+\newcommand{\muk}{\bm{\mu_k}} % mean vector of class-k Gaussian (discr analysis) 
 
 % residual and margin
 \newcommand{\eps}{\epsilon} % residual, stochastic
