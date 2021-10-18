@@ -66,7 +66,8 @@ get_command <- function(line) {
     line,
     gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl = TRUE))[[1]]
   
-  if (length(command) != 2) return(NULL)
+  if (length(command) < 2) return(NULL)
+  if (length(command) > 2) command <- command[1:2]
   
   command[3] <- stringr::str_match(
     line,
