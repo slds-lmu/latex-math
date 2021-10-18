@@ -1,6 +1,7 @@
 ---
 title: "`latex-math` Macros"
 subtitle: "compiled: `r Sys.Date()`"
+geometry: margin=2cm
 output: 
   pdf_document:
     keep_tex: TRUE
@@ -13,15 +14,13 @@ header-includes:
    - \usepackage{longtable}
    - \input{basic-ml.tex}
    - \input{basic-math.tex}
-   - \input{ml-bagging.tex}
-   - \input{ml-boosting.tex}
+   - \input{ml-ensembles.tex}
    - \input{ml-eval.tex}
    - \input{ml-feature-sel.tex}
    - \input{ml-gp.tex}
    - \input{ml-hpo.tex}
    - \input{ml-interpretable.tex}
    - \input{ml-nn.tex}
-   - \input{ml-rf.tex}
    - \input{ml-survival.tex}
    - \input{ml-svm.tex}
    - \input{ml-trees.tex}
@@ -52,7 +51,7 @@ sanitize_command <- function(command) {
          stringr::str_replace_all(
            command, 
            pattern = "#([1-9])",
-           replacement =  "{\\\\cdot}"), 
+           replacement =  "{\\\\#\\1}"), 
          "$")
 }
 get_command <- function(line) {
@@ -110,6 +109,6 @@ for (i in seq_along(macros)) {
                 tabular.environment = "longtable",
                 comment = FALSE)
   cat("\\hyperlink{toc}{Back to contents}")
-  cat("\\vspace{2cm}")
+  cat("\\newpage")
 }
 ```

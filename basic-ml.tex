@@ -13,23 +13,22 @@
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^T} % (x1, ..., xp) 
 \newcommand{\Xmat}{\mathbf{X}} % Design matrix
 \newcommand{\allDatasets}{\mathds{D}} % The set of all datasets
-\newcommand{\D}{\mathcal{D}} % D, data
-\newcommand{\obsi}[1][i]{\left(\xv^{(#1)},y^{(#1)}\right)} % observation (x^(i), y^(i))
-\newcommand{\Dset}{\left( \obsi[1], \ldots, \obsi[n]\right)} % {(x1,y1)), ..., (xn,yn)}, data
-\newcommand{\Dn}{\D_n} % D_n, data of size n
 \newcommand{\allDatasetsn}{\mathds{D}_n}  % The set of all datasets of size n 
+\newcommand{\D}{\mathcal{D}} % D, data
+\newcommand{\Dn}{\D_n} % D_n, data of size n
+\newcommand{\Dtrain}{\mathcal{D}_{\text{train}}} % D_train, training set
+\newcommand{\Dtest}{\mathcal{D}_{\text{test}}} % D_test, test set
+\newcommand{\xyi}[1][i]{\left(\xv^{(#1)}, y^{(#1)}\right)} % (x^i, y^i), i-th observation
+\newcommand{\Dset}{\left( \xyi[1], \ldots, \xyi[n]\right)} % {(x1,y1)), ..., (xn,yn)}, data
 \newcommand{\defAllDatasetsn}{(\Xspace \times \Yspace)^n} % Def. of the set of all datasets of size n 
 \newcommand{\defAllDatasets}{\bigcup_{n \in \N}(\Xspace \times \Yspace)^n} % Def. of the set of all datasets 
 \newcommand{\xdat}{\left\{ \xv^{(1)}, \ldots, \xv^{(n)}\right\}} % {x1, ..., xn}, input data
 \newcommand{\yvec}{\left(y^{(1)}, \hdots, y^{(n)}\right)^T} % (y1, ..., yn), vector of outcomes
 \renewcommand{\xi}[1][i]{\xv^{(#1)}} % x^i, i-th observed value of x
 \newcommand{\yi}[1][i]{y^{(#1)}} % y^i, i-th observed value of y 
-\newcommand{\xyi}[1][i]{\left(\xv^{(#1)}, y^{(#1)}\right)} % (x^i, y^i), i-th observation
 \newcommand{\xivec}{\left(x^{(i)}_1, \ldots, x^{(i)}_p\right)^T} % (x1^i, ..., xp^i), i-th observation vector
 \newcommand{\xj}{\xv_j} % x_j, j-th feature
 \newcommand{\xjvec}{\left(x^{(1)}_j, \ldots, x^{(n)}_j\right)^T} % (x^1_j, ..., x^n_j), j-th feature vector
-\newcommand{\Dtrain}{\mathcal{D}_{\text{train}}} % D_train, training set
-\newcommand{\Dtest}{\mathcal{D}_{\text{test}}} % D_test, test set
 \newcommand{\phiv}{\mathbf{\phi}} % Basis transformation function phi
 \newcommand{\phixi}{\mathbf{\phi}^{(i)}} % Basis transformation of xi: phi^i := phi(xi)
 
@@ -47,10 +46,7 @@
 \newcommand{\ftruex}{\ftrue(\xv)} % True underlying function (if a statistical model is assumed)
 \newcommand{\fx}{f(\xv)} % f(x), continuous prediction function
 \newcommand{\Hspace}{\mathcal{H}} % hypothesis space where f is from
-\newcommand{\fix}{f_i(\xv)} % f_i(x), discriminant component function
-\newcommand{\fjx}{f_j(\xv)} % f_j(x), discriminant component function
-\newcommand{\fkx}{f_k(\xv)} % f_k(x), discriminant component function
-\newcommand{\fgx}{f_g(\xv)} % f_g(x), discriminant component function
+\newcommand{\fkx}[1][k]{f_{#1}(\xv)} % f_j(x), discriminant component function
 \newcommand{\fh}{\hat{f}} % f hat, estimated prediction function
 \newcommand{\fxh}{\fh(\xv)} % fhat(x)
 \newcommand{\fxt}{f(\xv ~|~ \thetab)} % f(x | theta)
@@ -66,7 +62,6 @@
 
 % discrete prediction function h
 \newcommand{\hx}{h(\xv)} % h(x), discrete prediction function
-\newcommand{\hxv}{h(\xv)} % h(x), discrete prediction function with x (vector) as input
 \newcommand{\hh}{\hat{h}} % h hat
 \newcommand{\hxh}{\hat{h}(\xv)} % hhat(x)
 \newcommand{\hxt}{h(\xv | \thetab)} % h(x | theta)
@@ -81,9 +76,9 @@
 \newcommand{\thetah}{\hat{\theta}} % theta hat
 \newcommand{\thetab}{\bm{\theta}} % theta vector
 \newcommand{\thetabh}{\bm{\hat\theta}} % theta vector hat
-\newcommand{\thetat}{\thetab^{[t]}} % theta^[t] in optimization
-\newcommand{\thetatn}{\thetab^{[t+1]}} % theta^[t+1] in optimization
-\newcommand{\thxh}{\thetab^T \xv} % linear combination with theta
+\newcommand{\thetat}[1][t]{\thetab^{[#1]}} % theta^[t] in optimization
+\newcommand{\thetatn}[1][t]{\thetab^{[#1 +1]}} % theta^[t+1] in optimization
+\newcommand{\thx}{\thetab^T \xv} % linear combination with theta
 \newcommand{\thetahDnlambda}{\thetabh_{\Dn, \lamv}} %theta learned on Dn with hp lambda
 \newcommand{\thetahDlambda}{\thetabh_{\D, \lamv}} %theta learned on D with hp lambda
 % densities + probabilities
@@ -100,32 +95,29 @@
 \newcommand{\pdfxyit}{p\left(\xi, \yi ~|~ \thetab\right)} % p(x^(i), y^(i) | theta)
 
 % pdf of x given y
-\newcommand{\pdfxyk}{p(\xv | y=k)} % p(x | y = k)
-\newcommand{\pdfxyj}{p(\xv | y=j)} % p(x | y = j)
-\newcommand{\lpdfxyk}{\log \pdfxyk} % log p(x | y = k)
-\newcommand{\pdfxiyk}{p\left(\xi | y=k\right)} % p(x^i | y = k)
+\newcommand{\pdfxyk}[1][k]{p(\xv | y= #1)} % p(x | y = k)
+\newcommand{\lpdfxyk}[1][k]{\log p(\xv | y= #1)} % log p(x | y = k)
+\newcommand{\pdfxiyk}[1][k]{p\left(\xi | y= #1 \right)} % p(x^i | y = k)
 
 % prior probabilities
-\newcommand{\pik}{\pi_k} % pi_k, prior
-\newcommand{\lpik}{\log \pik} % log pi_k, log of the prior
+\newcommand{\pik}[1][k]{\pi_{#1}} % pi_k, prior
+\newcommand{\lpik}[1][k]{\log \pi_{#1}} % log pi_k, log of the prior
 \newcommand{\pit}{\pi(\thetab)} % Prior probability of parameter theta
 
 % posterior probabilities
 \newcommand{\post}{\P(y = 1 ~|~ \xv)} % P(y = 1 | x), post. prob for y=1
+\newcommand{\postk}[1][k]{\P(y = #1 ~|~ \xv)} % P(y = k | y), post. prob for y=k
 \newcommand{\pix}{\pi(\xv)} % pi(x), P(y = 1 | x)
-\newcommand{\postk}{\P(y = k ~|~ \xv)} % P(y = k | y), post. prob for y=k
-\newcommand{\pikx}{\pi_k(\xv)} % pi_k(x), P(y = k | x)
-\newcommand{\pikxt}{\pi_k(\xv ~|~ \thetab)} % pi_k(x | theta), P(y = k | x, theta)
-\newcommand{\pijx}{\pi_j(\xv)} % pi_j(x), P(y = j | x)
-\newcommand{\pigx}{\pi_g(\xv)} % pi_g(x), P(y = g | x)
+\newcommand{\pikx}[1][k]{\pi_{#1}(\xv)} % pi_k(x), P(y = k | x)
+\newcommand{\pikxt}[1][k]{\pi_{#1}(\xv ~|~ \thetab)} % pi_k(x | theta), P(y = k | x, theta)
+\newcommand{\pixh}{\hat \pi(\xv)} % pi(x) hat, P(y = 1 | x) hat
+\newcommand{\pikxh}[1][k]{\hat \pi_{#1}(\xv)} % pi_k(x) hat, P(y = k | x) hat
+\newcommand{\pixih}{\hat \pi(\xi)} % pi(x^(i)) with hat
+\newcommand{\pikxih}[1][k]{\hat \pi_{#1}(\xi)} % pi_k(x^(i)) with hat
 \newcommand{\pdfygxt}{p(y ~|~\xv, \thetab)} % p(y | x, theta)
 \newcommand{\pdfyigxit}{p\left(\yi ~|~\xi, \thetab\right)} % p(y^i |x^i, theta)
 \newcommand{\lpdfygxt}{\log \pdfygxt } % log p(y | x, theta)
 \newcommand{\lpdfyigxit}{\log \pdfyigxit} % log p(y^i |x^i, theta)
-\newcommand{\pixh}{\hat \pi(\xv)} % pi(x) hat, P(y = 1 | x) hat
-\newcommand{\pikxh}{\hat \pi_k(\xv)} % pi_k(x) hat, P(y = k | x) hat
-\newcommand{\pixih}{\hat \pi(\xi)} % pi(x^(i)) with hat
-\newcommand{\pikxih}{\hat \pi_k(\xi)} % pi_k(x^(i)) with hat
 
 % residual and margin
 \newcommand{\eps}{\epsilon} % residual, stochastic
@@ -167,8 +159,6 @@
 \newcommand{\LLt}{\mathcal{L}(\thetab)} % L(theta), likelihood
 \newcommand{\logl}{\ell} % l, log-likelihood
 \newcommand{\loglt}{\logl(\thetab)} % l(theta), log-likelihood
-\newcommand{\LS}{\mathfrak{L}} % ????????????
-\newcommand{\TS}{\mathfrak{T}} % ??????????????
 \newcommand{\errtrain}{\text{err}_{\text{train}}} % training error
-\newcommand{\errtest}{\text{err}_{\text{test}}} % training error
-\newcommand{\errexp}{\overline{\text{err}_{\text{test}}}} % training error
+\newcommand{\errtest}{\text{err}_{\text{test}}} % test error
+\newcommand{\errexp}{\overline{\text{err}_{\text{test}}}} % avg training error
