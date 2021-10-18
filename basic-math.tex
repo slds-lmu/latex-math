@@ -1,17 +1,13 @@
 % math spaces
 \ifdefined\N                                                                
-\renewcommand{\N}{\mathds{N}} % N defined by "siunitx" (which we use), for "NEWTON"
-\else
-  \newcommand{\N}{\mathds{N}} % N, naturals
-\fi
+\renewcommand{\N}{\mathds{N}} % N, naturals
+\else \newcommand{\N}{\mathds{N}} \fi 
 \newcommand{\Z}{\mathds{Z}} % Z, integers
 \newcommand{\Q}{\mathds{Q}} % Q, rationals
 \newcommand{\R}{\mathds{R}} % R, reals
-\ifdefined\C
-  \renewcommand{\C}{\mathds{C}} 
-\else
-  \newcommand{\C}{\mathds{C}} % C, complex
-\fi
+\ifdefined\C 
+  \renewcommand{\C}{\mathds{C}} % C, complex
+\else \newcommand{\C}{\mathds{C}} \fi
 \newcommand{\continuous}{\mathcal{C}} % C, space of continuous functions
 \newcommand{\M}{\mathcal{M}} % machine numbers
 \newcommand{\epsm}{\epsilon_m} % maximum error

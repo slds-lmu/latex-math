@@ -60,7 +60,7 @@ get_command <- function(line) {
   #see https://www.regular-expressions.info/recurse.html#balanced
   
   # avoid double appearance for ifdefined-renewcommand-else-newcommand
-  if (grepl("renewcommand", line)) return(NULL)
+  if (grepl("\\\\else", line)) return(NULL)
   
   command <- regmatches(
     line,
