@@ -1,6 +1,10 @@
 ---
 title: "`latex-math` Macros"
-output: pdf_document
+subtitle: "compiled: `r Sys.Date()`"
+geometry: "left=1cm, right=1cm"
+output: 
+  pdf_document:
+    keep_tex: TRUE
 header-includes:
    - \usepackage{mathtools}
    - \usepackage{bm}
@@ -8,15 +12,18 @@ header-includes:
    - \usepackage{dsfont}
    - \usepackage{xspace}
    - \usepackage{longtable}
-   # - \input{basic-ml.tex}
-   # - \input{basic-math.tex}
-   # - \input{ml-bagging.tex}
-   - \input{ml-boosting.tex}
-   # - \input{ml-gp.tex}
-   # - \input{ml-mbo.tex}
-   # - \input{ml-nn.tex}
-   # - \input{ml-svm.tex}
-   # - \input{ml-trees.tex}
+   - \input{basic-ml.tex}
+   - \input{basic-math.tex}
+   - \input{ml-ensembles.tex}
+   - \input{ml-eval.tex}
+   - \input{ml-feature-sel.tex}
+   - \input{ml-gp.tex}
+   - \input{ml-hpo.tex}
+   - \input{ml-interpretable.tex}
+   - \input{ml-nn.tex}
+   - \input{ml-survival.tex}
+   - \input{ml-svm.tex}
+   - \input{ml-trees.tex}
 editor_options: 
   chunk_output_type: console
 ---
@@ -26,11 +33,14 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(purrr)
 library(xtable)
+library(stringr)
 ```
 
 <!-- Run this file with rmarkdown::render() to recreate the tables.  -->
 
 Latex macros like `\frac{#1}{#2}` with arguments are displayed as $\frac{\#1}{\#2}$.
+
+Note that macro declarations may only span a single line to be displayed correctly in the below tables.
 
 
 ```{r get-macros, echo = FALSE, warning = FALSE}
@@ -40,32 +50,44 @@ sanitize_command <- function(command) {
          stringr::str_replace_all(
            command, 
            pattern = "#([1-9])",
-           replacement = "{\\\\#\\1}"), 
+           replacement =  "{\\\\#\\1}"), 
          "$")
 }
 get_command <- function(line) {
+  
   #see https://www.regular-expressions.info/recurse.html#balanced
-  command <- regmatches(line, 
-                        gregexpr("\\{(?>[^{}]|(?R))*\\}", 
-                                 line, perl = TRUE)
-                        )[[1]]
-  if (length(command) != 2) return(NULL)
-  command[3] <- stringr::str_match(line, 
-                          pattern = "\\}\\s*%\\s*(.*)$")[-1]
+  
+  # avoid double appearance for ifdefined-renewcommand-else-newcommand
+  if (grepl("\\\\else", line)) return(NULL)
+  
+  command <- regmatches(
+    line,
+    gregexpr("\\{(?>[^{}]|(?R))*\\}", line, perl = TRUE))[[1]]
+  
+  if (length(command) < 2) return(NULL)
+  if (length(command) > 2) command <- command[1:2]
+  
+  command[3] <- stringr::str_match(
+    line,
+    pattern = "\\}\\s*%\\s*(.*)$")[-1]
+  
   names(command) <- c("Macro", "Notation", "Comment")
-  command[1] <- substr(command[1], 2, nchar(command[1])-1)
+  
+  command[1] <- substr(command[1], 2, nchar(command[1]) - 1)
+  
   if (grepl("IGNORE_NOTATION", command[3])) {
     command[2] <- ""
-  }
+    command[3] <- stringr::str_remove(command[3], "IGNORE_NOTATION")}
+  
   command[1] <- paste0("\\verb!", command[1], "!")
   command[2] <- sanitize_command(command[2])
   command[3] <- xtable::sanitize(command[3])
+  
   command
 }
 
-#texfiles <- list.files(pattern = "\\.tex$")
-#texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
-texfiles <- "ml-boosting.tex"
+texfiles <- list.files(pattern = "\\.tex$")
+texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
 macros <- texfiles %>% 
   map(~ readLines(.)) %>% 
   map_depth(.depth = 2, ~ get_command(.)) %>% 
@@ -75,15 +97,17 @@ names(macros) <- texfiles
 ```
 
 ```{r print-macros, results='asis', echo = FALSE}
+cat("\\tableofcontents \\label{toc} \\newpage")
+
 for (i in seq_along(macros)) {
-  cat("\\section{",  names(macros)[i], "} ")
-  cat(macros[[i]])
-  # null <- print(xtable(macros[[i]]), 
-  #               sanitize.text.function = I, 
-  #               include.rownames = FALSE, 
-  #               floating = FALSE,
-  #               tabular.environment = "longtable", 
-  #               comment = FALSE)
+  cat("\\section{",  stringr::str_remove(names(macros)[i], ".tex"), "} ")
+  null <- print(xtable(macros[[i]]),
+                sanitize.text.function = I,
+                include.rownames = FALSE,
+                floating = FALSE,
+                tabular.environment = "longtable",
+                comment = FALSE)
+  cat("\\hyperlink{toc}{Back to contents}")
   cat("\\newpage")
 }
 ```
