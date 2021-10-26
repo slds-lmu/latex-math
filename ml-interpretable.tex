@@ -1,3 +1,6 @@
+%%%%%% perturbed data
+\newcommand{\pert}[3]{\ifthenelse{\equal{#2}{}}{\tilde{#1}}{\ifthenelse{\equal{#3}{}}{\tilde{#1}^{#2}}{\tilde{#1}^{#2|#3}}}}	% command to express that for #1 the subset #2 was perturbed given subset #3
+
 %%%%%% marginalized functions
 \newcommand{\fj}{f_j} % marginal function f_j, depending on feature j
 \newcommand{\fnj}{f_{-j}} % marginal function f_{-j}, depending on all features but j
