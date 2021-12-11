@@ -21,17 +21,19 @@
 % Generalization error
 \newcommand{\GE}{\mathrm{GE}} % GE
 \newcommand{\GEh}{\widehat{\GE}} % GE-hat 
-\newcommand{\GEfull}[1][\ntrain]{\GE(\inducer, \lamv, #1, \rho)} % GE full
-\newcommand{\GEhholdout}{\GEh_{\Jtrain, \Jtest}(\inducer, \lamv, |\Jtrain|, \rho)} % GE hat holdout
-\newcommand{\GEhholdouti}[1][i]{\GEh_{\Jtraini[#1], \Jtesti[#1]}(\inducer, \lamv, |\Jtraini[#1]|, \rho)} % GE hat holdout i-th set
+\newcommand{\GEfull}[1][\ntrain]{\GE(\ind, \lamv, #1, \rho)} % GE full
+\newcommand{\GEhholdout}{\GEh_{\Jtrain, \Jtest}(\ind, \lamv, |\Jtrain|, \rho)} % GE hat holdout
+\newcommand{\GEhholdouti}[1][i]{\GEh_{\Jtraini[#1], \Jtesti[#1]}(\ind, \lamv, |\Jtraini[#1]|, \rho)} % GE hat holdout i-th set
 \newcommand{\GEhlam}{\GEh(\lamv)} % GE-hat(lam) 
-\newcommand{\GEhlamsubIJrho}{\GEh_{\inducer, \JJ, \rho}(\lamv)} % GE-hat_I,J,rho(lam) 
-\newcommand{\GEhresa}{\GEh(\inducer, \JJ, \rho, \lamv)} % GE-hat_I,J,rho(lam) 
+\newcommand{\GEhlamsubIJrho}{\GEh_{\ind, \JJ, \rho}(\lamv)} % GE-hat_I,J,rho(lam) 
+\newcommand{\GEhresa}{\GEh(\ind, \JJ, \rho, \lamv)} % GE-hat_I,J,rho(lam) 
 \newcommand{\GErhoDef}{\lim_{\ntest\rightarrow\infty} \E_{\Dtrain,\Dtest \sim \Pxy} \left[ \rho\left(\yv_{\Jtest}, \FJtestftrain\right)\right]} % GE formal def
 \newcommand{\agr}{\mathrm{agr}} % aggregate function
 \newcommand{\GEf}{\GE\left(\fh\right)} % GE of a fitted model
+\newcommand{\GEfL}{\GE\left(\fh, L\right)} % GE of a fitted model wrt loss L
+\newcommand{\Lyfhx}{L\left(y, \hat{f}(\xv)\right)} % pointwise loss of fitted model
 \newcommand{\GEnf}[1]{GE_n\left(\fh_{#1}\right)} % GE of a fitted model
-\newcommand{\GEind}{GE_n\left(\inducer_{L, O}\right)} % GE of inducer
+\newcommand{\GEind}{GE_n\left(\ind_{L, O}\right)} % GE of inducer
 \newcommand{\GED}{\GE_{\D}} % GE indexed with data
 \newcommand{\EGEn}{EGE_n} % expected GE
 \newcommand{\EDn}{\E_{|D| = n}} % expectation wrt data of size n
@@ -43,8 +45,8 @@
 \newcommand{\FJ}[1][J]{\F_{#1}} % predscore mat idxvec J 
 \newcommand{\FJf}{\FJ[J,f]} % predscore mat idxvec J and model f
 \newcommand{\FJtestfh}{\FJ[\Jtest, \fh]} % predscore mat idxvec Jtest and model f hat
-\newcommand{\FJtestftrain}{\F_{\Jtest,\inducer(\Dtrain, \lamv)}} % predscore mat idxvec Jtest and model f
-\newcommand{\FJtestftraini}[1][i]{\F_{\Jtesti[#1],\inducer(\Dtraini[#1], \lamv)}}  % predscore mat i-th idxvec Jtest and model f
+\newcommand{\FJtestftrain}{\F_{\Jtest,\ind(\Dtrain, \lamv)}} % predscore mat idxvec Jtest and model f
+\newcommand{\FJtestftraini}[1][i]{\F_{\Jtesti[#1],\ind(\Dtraini[#1], \lamv)}}  % predscore mat i-th idxvec Jtest and model f
 \newcommand{\FJfDef}{\left(f(\xv^{(J^{(1)})}),\dots, f(\xv^{(J^{(m)})})\right)} % def of predscore mat idxvec J and model f
 \newcommand{\preimageRho}{\bigcup_{m\in\N}\left(\Yspace^m\times\R^{m\times g}\right)} % Set of all datasets times HP space
 
