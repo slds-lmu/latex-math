@@ -17,7 +17,7 @@
 \newcommand{\yJDef}{\left(y^{(J^{(1)})},\dots,y^{(J^{(m)})}\right)} % def of the output vector associated to index J
 \newcommand{\JJ}{\mathcal{J}} % cali-J, set of all splits
 \newcommand{\JJset}{\left((\Jtraini[1], \Jtesti[1]),\dots,(\Jtraini[B], \Jtesti[B])\right)} % (Jtrain_1,Jtest_1) ...(Jtrain_B,Jtest_B)
-
+\newcommand{\Itrainlam}{\ind(\Dtrain, \lamv)}
 % Generalization error
 \newcommand{\GE}{\mathrm{GE}} % GE
 \newcommand{\GEh}{\widehat{\GE}} % GE-hat 
@@ -45,7 +45,7 @@
 \newcommand{\FJ}[1][J]{\F_{#1}} % predscore mat idxvec J 
 \newcommand{\FJf}{\FJ[J,f]} % predscore mat idxvec J and model f
 \newcommand{\FJtestfh}{\FJ[\Jtest, \fh]} % predscore mat idxvec Jtest and model f hat
-\newcommand{\FJtestftrain}{\F_{\Jtest,\ind(\Dtrain, \lamv)}} % predscore mat idxvec Jtest and model f
+\newcommand{\FJtestftrain}{\F_{\Jtest, \Itrainlam}} % predscore mat idxvec Jtest and model f
 \newcommand{\FJtestftraini}[1][i]{\F_{\Jtesti[#1],\ind(\Dtraini[#1], \lamv)}}  % predscore mat i-th idxvec Jtest and model f
 \newcommand{\FJfDef}{\left(f(\xv^{(J^{(1)})}),\dots, f(\xv^{(J^{(m)})})\right)} % def of predscore mat idxvec J and model f
 \newcommand{\preimageRho}{\bigcup_{m\in\N}\left(\Yspace^m\times\R^{m\times g}\right)} % Set of all datasets times HP space
