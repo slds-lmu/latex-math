@@ -2,19 +2,11 @@
 
 % thetas
 \newcommand{\ts}{\theta^{\star}} % theta*
-\newcommand{\t1}{\theta^{[1]}} % theta 1
-\newcommand{\t2}{\theta^{[2]}} % theta 2
-\newcommand{\t3}{\theta^{[3]}} % theta 3
+\newcommand{\thetan}[1]{\theta^{[#1]}} % theta^n
 
 % base learners
-\newcommand{\b1}{b_1} % BL 1
-\newcommand{\b2}{b_2} % BL 2
-\newcommand{\b3}{b_3} % BL 3
-\newcommand{\bj}{b_j} % BL j
-\newcommand{\bjt}{b_j(\vx, \theta)} % BL j with theta
-\newcommand{\bjts}{b_j(\vx, \ts)} % BL j with theta*
-
-% fitted sets of BLs
-\newcommand{\hf1}{\widehat{f}^{[1]}(\vx)} % first fitted set of BLs
-\newcommand{\hf2}{\widehat{f}^{[2]}(\vx)} % second fitted set of BLs
-\newcommand{\hf3}{\widehat{f}^{[3]}(\vx)} % third fitted set of BLs
+\newcommand{\bl}[1]{b_{#1}} % BL n
+\newcommand{\blj}{b_j} % BL j
+\newcommand{\bljt}{b_j(\xv, \theta)} % BL j with theta
+\newcommand{\bljts}{b_j(\xv, \ts)} % BL j with theta*
+\newcommand{\hf}[1]{\widehat{f}^{[#1]}(\xv)} % n-th fitted set of BLs
