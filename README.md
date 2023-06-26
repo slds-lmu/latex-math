@@ -32,7 +32,14 @@ Note that some of the macros defined here may use additional Latex packages -- a
 See `latex-math.pdf` for all currently defined commands & definitions. 
 
 ## Updating / adding files
+
 - A new shortcut / notation that falls into the scope of one of the existing files should be added in the respective file with a short description.
 - Multiple shortcuts / notations belonging to another major subject should be summarized in a new .tex file. 
 - **ALWAYS** check if a command is already contained in one of the files - overwriting a command might result in compiling errors.  
 - **ALWAYS recompile `latex-math.Rmd` if you add new commands so it is kept up-to-date and to check that you have committed all the changes your notation requires to work.**
+
+To ensure recompilation is not forgotten, please install the pre-commit hook:
+
+```sh
+cp service/pre-commit-check-pdf .git/hooks/pre-commit
+```
