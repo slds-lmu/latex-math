@@ -2,7 +2,7 @@
 title: "`latex-math` Macros"
 subtitle: "compiled: `r Sys.Date()`"
 geometry: "left=1cm, right=1cm"
-output: 
+output:
   pdf_document:
     keep_tex: TRUE
 header-includes:
@@ -12,6 +12,7 @@ header-includes:
    - \usepackage{dsfont}
    - \usepackage{xspace}
    - \usepackage{longtable}
+   - \usepackage{xifthen}
    - \input{basic-ml.tex}
    - \input{basic-math.tex}
    - \input{ml-ensembles.tex}
@@ -24,7 +25,7 @@ header-includes:
    - \input{ml-survival.tex}
    - \input{ml-svm.tex}
    - \input{ml-trees.tex}
-editor_options: 
+editor_options:
   chunk_output_type: console
 ---
 
