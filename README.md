@@ -11,6 +11,7 @@ Notation & shortcuts are split into multiple files depending on subject and can 
 + ml-nn: neural networks
 + ml-svm: support vector machines
 + ml-trees: decision trees
++ ml-interpretable: IML / xAI
 
 ## Using the notation
 - Clone this repository into the main directory of your repo.
@@ -27,6 +28,7 @@ Note that some of the macros defined here may use additional Latex packages -- a
 \usepackage{siunitx} %basic-ml
 \usepackage{dsfont} %basic-math
 \usepackage{xspace} %ml-mbo
+\usepackage{xifthen} %ml-interpretable
 ```
 
 See `latex-math.pdf` for all currently defined commands & definitions. 
