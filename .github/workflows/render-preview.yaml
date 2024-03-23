@@ -52,7 +52,7 @@ jobs:
 
       - name: Install R packages for latex-math.Rmd
         run: |
-          Rscript -e "install.packages(c('rmarkdown', 'xtable', 'stringr'))"
+          Rscript -e "install.packages(c('rmarkdown', 'xtable', 'stringr'), repos = 'https://packagemanager.posit.co/all/__linux__/jammy/latest')"
 
       - name: Render Rmarkdown files and Commit Results
         run: |
