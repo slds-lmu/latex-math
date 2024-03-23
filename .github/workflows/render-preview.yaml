@@ -13,10 +13,10 @@ on:
   push:
     paths: ['**.Rmd', '**.*tex']
 
-name: render-rmarkdown
+name: render-preview
 
 jobs:
-  render-rmarkdown:
+  render-preview:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

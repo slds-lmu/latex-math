@@ -6,28 +6,28 @@ output:
   pdf_document:
     keep_tex: TRUE
 header-includes:
-   - \usepackage{mathtools}
-   - \usepackage{bm}
-   - \usepackage{siunitx}
-   - \usepackage{dsfont}
-   - \usepackage{xspace}
-   - \usepackage{longtable}
-   - \usepackage{xifthen}
-   - \input{basic-ml.tex}
-   - \input{basic-math.tex}
-   - \input{ml-ensembles.tex}
-   - \input{ml-eval.tex}
-   - \input{ml-mbo.tex}
-   - \input{ml-online.tex}
-   - \input{ml-multitarget.tex}
-   - \input{ml-feature-sel.tex}
-   - \input{ml-gp.tex}
-   - \input{ml-hpo.tex}
-   - \input{ml-interpretable.tex}
-   - \input{ml-nn.tex}
-   - \input{ml-survival.tex}
-   - \input{ml-svm.tex}
-   - \input{ml-trees.tex}
+  - \usepackage{mathtools}
+  - \usepackage{bm}
+  - \usepackage{siunitx}
+  - \usepackage{dsfont}
+  - \usepackage{xspace}
+  - \usepackage{longtable}
+  - \usepackage{xifthen}
+  - \input{basic-ml.tex}
+  - \input{basic-math.tex}
+  - \input{ml-ensembles.tex}
+  - \input{ml-eval.tex}
+  - \input{ml-mbo.tex}
+  - \input{ml-online.tex}
+  - \input{ml-multitarget.tex}
+  - \input{ml-feature-sel.tex}
+  - \input{ml-gp.tex}
+  - \input{ml-hpo.tex}
+  - \input{ml-interpretable.tex}
+  - \input{ml-nn.tex}
+  - \input{ml-survival.tex}
+  - \input{ml-svm.tex}
+  - \input{ml-trees.tex}
 editor_options:
   chunk_output_type: console
 ---
