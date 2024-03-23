@@ -1,7 +1,7 @@
 # Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
-  # Allow manually trigegring the workflow via GitHub website, gh CLI tool etc.
+  # Allow manually triggering the workflow via GitHub website, gh CLI tool etc.
   # Also adds parameter to enable tmate (inetractive tmux session for debugging)
   workflow_dispatch:
     inputs:
@@ -30,7 +30,23 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v2
 
-      - uses: r-lib/actions/setup-renv@v2
+      - uses: r-lib/actions/setup-tinytex@v2
+      - run: tlmgr --version
+
+      - name: Install additional LaTeX packages
+        run: |
+          # tlmgr update --self
+          tlmgr install mathtools bm siunitx doublestroke
+          tlmgr install xspace longtable xifthen
+          tlmgr list --only-installed
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          cache-version: 1
+          extra-packages: |
+            any::rmarkdown
+            any::xtable
+            any::stringr
 
       # Get a tmux ssh session for interactive debugging
       # Controlled via inputs from GitHub webinterface
