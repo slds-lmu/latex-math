@@ -46,7 +46,7 @@ jobs:
           tlmgr install mathtools 
           tlmgr install siunitx 
           tlmgr install doublestroke
-          tlmgr install xspace 
+          # tlmgr install xspace bm # contain in TeXLive 'tools'
           tlmgr install longtable 
           tlmgr install xifthen
           tlmgr list --only-installed
