@@ -50,13 +50,9 @@ jobs:
           tlmgr install xifthen
           tlmgr list --only-installed
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          cache-version: 1
-          extra-packages: |
-            any::rmarkdown
-            any::xtable
-            any::stringr
+      - name: Install R packages for latex-math.Rmd
+        run: |
+          Rscript -e "install.packages(c('rmarkdown', 'xtable', 'stringr'))"
 
       - name: Render Rmarkdown files and Commit Results
         run: |
