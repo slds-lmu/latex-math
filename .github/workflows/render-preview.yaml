@@ -33,11 +33,23 @@ jobs:
       - uses: r-lib/actions/setup-tinytex@v2
       - run: tlmgr --version
 
+      # Get a tmux ssh session for interactive debugging
+      # Controlled via inputs from GitHub webinterface
+      # See https://github.com/mxschmitt/action-tmate
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+
       - name: Install additional LaTeX packages
         run: |
-          # tlmgr update --self
-          tlmgr install mathtools bm siunitx doublestroke
-          tlmgr install xspace longtable xifthen
+          tlmgr update --self
+          tlmgr install mathtools 
+          tlmgr install bm 
+          tlmgr install siunitx 
+          tlmgr install doublestroke
+          tlmgr install xspace 
+          tlmgr install longtable 
+          tlmgr install xifthen
           tlmgr list --only-installed
 
       - uses: r-lib/actions/setup-r-dependencies@v2
@@ -47,13 +59,6 @@ jobs:
             any::rmarkdown
             any::xtable
             any::stringr
-
-      # Get a tmux ssh session for interactive debugging
-      # Controlled via inputs from GitHub webinterface
-      # See https://github.com/mxschmitt/action-tmate
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
 
       - name: Render Rmarkdown files and Commit Results
         run: |
