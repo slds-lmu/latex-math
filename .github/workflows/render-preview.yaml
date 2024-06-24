@@ -52,7 +52,7 @@ jobs:
 
       - name: Install R packages for latex-math.Rmd
         run: |
-          Rscript -e "install.packages('pak')"
+          Rscript -e 'install.packages("pak", repos = sprintf("https://r-lib.github.io/p/pak/stable/%s/%s/%s", .Platform$pkgType, R.Version()$os, R.Version()$arch))'
           Rscript -e "pak::pak(c('rmarkdown', 'xtable', 'stringr'))"
 
       - name: Render Rmarkdown files and Commit Results
