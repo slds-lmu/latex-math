@@ -5,29 +5,27 @@ geometry: "left=1cm, right=1cm"
 output:
   pdf_document:
     keep_tex: TRUE
-header-includes:
-  - \usepackage{mathtools}
-  - \usepackage{bm}
-  - \usepackage{siunitx}
-  - \usepackage{dsfont}
-  - \usepackage{xspace}
-  - \usepackage{longtable}
-  - \usepackage{xifthen}
-  - \input{basic-ml.tex}
-  - \input{basic-math.tex}
-  - \input{ml-ensembles.tex}
-  - \input{ml-eval.tex}
-  - \input{ml-mbo.tex}
-  - \input{ml-online.tex}
-  - \input{ml-multitarget.tex}
-  - \input{ml-feature-sel.tex}
-  - \input{ml-gp.tex}
-  - \input{ml-hpo.tex}
-  - \input{ml-interpretable.tex}
-  - \input{ml-nn.tex}
-  - \input{ml-survival.tex}
-  - \input{ml-svm.tex}
-  - \input{ml-trees.tex}
+    latex_engine: "pdflatex"
+    includes:
+      in_header: 
+        - preamble.tex
+        - basic-math.tex
+        - basic-ml.tex
+        - ml-ensembles.tex
+        - ml-eval.tex
+        - ml-feature-sel.tex
+        - ml-gp.tex
+        - ml-hpo.tex
+        - ml-infotheory.tex
+        - ml-interpretable.tex
+        - ml-mbo.tex
+        - ml-multitarget.tex
+        - ml-nn.tex
+        - ml-online.tex
+        - ml-regu.tex
+        - ml-survival.tex
+        - ml-svm.tex
+        - ml-trees.tex
 editor_options:
   chunk_output_type: console
 ---
@@ -98,7 +96,9 @@ get_command <- function(line) {
   command
 }
 
-texfiles <- list.files(pattern = "\\.tex$")
+# Find all .tex files starting with `basic-` or `ml-`
+# !! If new file prefixes are added, they must be added to the regex pattern
+texfiles <- list.files(pattern = "(ml|basic)-.*\\.tex")
 texfiles <- setdiff(texfiles, "latex-math.tex") # avoid itself
 
 macros <- texfiles |>
