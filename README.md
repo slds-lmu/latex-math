@@ -44,7 +44,7 @@ Note that some of the macros defined here may use additional Latex packages -- a
 \usepackage{mathtools}
 \usepackage{bm}      % basic-ml, ml-gp
 \usepackage{siunitx} % basic-ml
-\usepackage{dsfont}  % basic-math, not package is called `doublestroke` when installing via tlmgr
+\usepackage{dsfont}  % basic-math, note package is called `doublestroke` when installing via tlmgr
 \usepackage{xspace}  % ml-mbo
 \usepackage{xifthen} % ml-interpretable
 ```
