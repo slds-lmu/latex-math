@@ -26,7 +26,7 @@ Notation & shortcuts are split into multiple files depending on subject and can 
 - `ml-trees`: Decision trees
 
 
-:warning: **Important Usage Note**: If you encounter these files within a lecture or project repository, do not make any changes locally.  
+:warning: **Important Usage Note**: If you encounter these files within a lecture or project repository, **do not** make any changes locally.  
 Go to [slds-lmu/latex-math](https://github.com/slds-lmu/latex-math) and make your changes either directly or via pull request.
 Any local changes are assumed to be spurious and *will be overridden* with upstream `slds-lmu/latex-math`.
 
@@ -34,9 +34,9 @@ Any local changes are assumed to be spurious and *will be overridden* with upstr
 
 - Clone this repository into the main directory of your repo.
 - Add `latex-math` to the gitignore file. 
-- Add \input{../latex-math/\*}, for every file /\* you need to the preamble of your (TeX/Rmd) file but not into any common preamble file
+- Add `\input{../latex-math/<name>}`, for every file `<name>.tex` you need to the preamble of your (TeX/Rmd) file but not into any common preamble file
 
-This means you have to keep this repository in sync with each client repository by also doing git pull in the latex-math subdirectory when pulling changes for the client repo. The reason we do it this way is that work on latex-math is not duplicated.
+This means you have to keep this repository in sync with each client repository by also doing git pull in the latex-math sub-directory when pulling changes for the client repo. The reason we do it this way is that work on latex-math is not duplicated.
 
 Note that some of the macros defined here may use additional Latex packages -- a good set to start with is
 
@@ -53,13 +53,18 @@ See `latex-math.pdf` for all currently defined commands & definitions.
 
 Note that the file `preamble.tex` contains packages required for `latex-math.Rmd` to be rendered, which are not necessarily all packages you would need in a fresh LaTeX project, since RMarkdown by default includes various required packages already.
 
-## Updating / adding files
+## Adding macros and files
 
 - A new shortcut / notation that falls into the scope of one of the existing files should be added in the respective file with a short description.
-- Multiple shortcuts / notations belonging to another major subject should be summarized in a new .tex file. 
+- Multiple shortcuts / notations belonging to another major subject should be summarized in a new `.tex` file. 
+- **Avoid** creating macros consisting of multiple previously defined here --- macros should
+    - be easy to remember
+    - be used often enough to warrant a shortcut
+    - avoid inter-dependencies between macros and `.tex` files
+    - be added sparingly to avoid clutter
 - **ALWAYS** check if a command is already contained in one of the files - overwriting a command might result in compiling errors.  
 - **ALWAYS recompile `latex-math.Rmd` if you add new commands so it is kept up-to-date and to check that you have committed all the changes your notation requires to work.**
-- If you add a new file, make sure it is added as an `include` in the header of `latex-math.Rmd` such that it is included in the rendered preview
+- If you **add a new file**, make sure it is added as an `include` in the header of `latex-math.Rmd` such that it is included in the rendered preview
 
 ## Building
 
