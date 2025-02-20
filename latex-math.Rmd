@@ -9,26 +9,29 @@ output:
     includes:
       in_header:
         - preamble.tex
-        - basic-math.tex
-        - basic-ml.tex
-        - ml-ensembles.tex
-        - ml-eval.tex
-        - ml-feature-sel.tex
-        - ml-gp.tex
-        - ml-hpo.tex
-        - ml-infotheory.tex
-        - ml-interpretable.tex
-        - ml-mbo.tex
-        - ml-multitarget.tex
-        - ml-nn.tex
-        - ml-online.tex
-        - ml-regu.tex
-        - ml-survival.tex
-        - ml-svm.tex
-        - ml-trees.tex
+        - combined.tex
+        # - basic-math.tex
+        # - basic-ml.tex
+        # - ml-ensembles.tex
+        # - ml-eval.tex
+        # - ml-feature-sel.tex
+        # - ml-gp.tex
+        # - ml-hpo.tex
+        # - ml-infotheory.tex
+        # - ml-interpretable.tex
+        # - ml-mbo.tex
+        # - ml-multitarget.tex
+        # - ml-nn.tex
+        # - ml-online.tex
+        # - ml-regu.tex
+        # - ml-survival.tex
+        # - ml-svm.tex
+        # - ml-trees.tex
 editor_options:
   chunk_output_type: console
 ---
+
+<!-- Run this file with rmarkdown::render() to recreate the tables.  -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
@@ -47,18 +50,12 @@ included_tex <- rmarkdown::metadata$output$pdf_document$includes$in_header
 included_tex <- setdiff(included_tex, "preamble.tex") # ignore preamble
 
 # check for missing files
-missing_tex <- setdiff(texfiles, included_tex) 
-if (length(missing_tex) > 0) {
-  stop(sprintf("The following files are missing from the header includes in latex-math.Rmd:\n%s", paste(missing_tex, collapse = "\n")))
-}
+# missing_tex <- setdiff(texfiles, included_tex) 
+# if (length(missing_tex) > 0) {
+#   stop(sprintf("The following files are missing from the header includes in latex-math.Rmd:\n%s", paste(missing_tex, collapse = "\n")))
+# }
 ```
 
-```{r create-latex-math-combined, fil = "create-latex-math-combined"}
-# Combine all tex files into a single file
-```
-
-
-<!-- Run this file with rmarkdown::render() to recreate the tables.  -->
 
 Latex macros like `\frac{#1}{#2}` with arguments are displayed as $\frac{\#1}{\#2}$.
 

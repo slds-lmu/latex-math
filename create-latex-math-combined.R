@@ -14,4 +14,18 @@ combined <- vapply(seq_along(texfiles), \(i) {
   )
 }, character(1))
 
-writeLines(combined, "latex-math-combined.tex")
+
+writeLines(combined, "combined.tex")
+
+# MathJax etc. don't know these commands from doublestroke (ds) and bm packages
+combined <- stringr::str_replace_all(combined, pattern = r"(\\mathds\{)", replacement = r"(\\mathbb{)")
+combined <- stringr::str_replace_all(combined, pattern = r"(\\bm\{)", replacement = r"(\\boldsymbol{)")
+
+combined <- paste0(
+  "$$",
+  paste(combined, collapse = "\n"),
+  "$$",
+  sep = "\n"
+)
+
+writeLines(combined, "combined.qmd")

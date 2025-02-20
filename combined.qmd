@@ -1,16 +1,16 @@
-% ------------- basic-math.tex -------------
+$$% ------------- basic-math.tex -------------
 
 % dependencies: amsmath, amssymb, dsfont
 % math spaces
 \ifdefined\N
-\renewcommand{\N}{\mathds{N}} % N, naturals
-\else \newcommand{\N}{\mathds{N}} \fi
-\newcommand{\Z}{\mathds{Z}} % Z, integers
-\newcommand{\Q}{\mathds{Q}} % Q, rationals
-\newcommand{\R}{\mathds{R}} % R, reals
+\renewcommand{\N}{\mathbb{N}} % N, naturals
+\else \newcommand{\N}{\mathbb{N}} \fi
+\newcommand{\Z}{\mathbb{Z}} % Z, integers
+\newcommand{\Q}{\mathbb{Q}} % Q, rationals
+\newcommand{\R}{\mathbb{R}} % R, reals
 \ifdefined\C
-\renewcommand{\C}{\mathds{C}} % C, complex
-\else \newcommand{\C}{\mathds{C}} \fi
+\renewcommand{\C}{\mathbb{C}} % C, complex
+\else \newcommand{\C}{\mathbb{C}} \fi
 \newcommand{\continuous}{\mathcal{C}} % C, space of continuous functions
 \newcommand{\M}{\mathcal{M}} % machine numbers
 \newcommand{\epsm}{\epsilon_m} % maximum error
@@ -54,9 +54,9 @@
 \newcommand{\prodjp}{\prod\limits_{j=1}^p} % product from j=1 to p
 
 % linear algebra
-\newcommand{\one}{\bm{1}} % 1, unitvector
+\newcommand{\one}{\boldsymbol{1}} % 1, unitvector
 \newcommand{\zero}{\mathbf{0}} % 0-vector
-\newcommand{\id}{\bm{I}} % I, identity
+\newcommand{\id}{\boldsymbol{I}} % I, identity
 \newcommand{\diag}{\operatorname{diag}} % diag, diagonal
 \newcommand{\trace}{\operatorname{tr}} % tr, trace
 \newcommand{\spn}{\operatorname{span}} % span
@@ -66,8 +66,8 @@
 \newcommand{\Deltab}{\mathbf{\Delta}} % error term for vectors
 
 % basic probability + stats
-\renewcommand{\P}{\mathds{P}} % P, probability
-\newcommand{\E}{\mathds{E}} % E, expectation
+\renewcommand{\P}{\mathbb{P}} % P, probability
+\newcommand{\E}{\mathbb{E}} % E, expectation
 \newcommand{\var}{\mathsf{Var}} % Var, variance
 \newcommand{\cov}{\mathsf{Cov}} % Cov, covariance
 \newcommand{\corr}{\mathsf{Corr}} % Corr, correlation
@@ -92,8 +92,8 @@
 \newcommand{\xy}{(\xv, y)} % observation (x, y)
 \newcommand{\xvec}{\left(x_1, \ldots, x_p\right)^\top} % (x1, ..., xp)
 \newcommand{\Xmat}{\mathbf{X}} % Design matrix
-\newcommand{\allDatasets}{\mathds{D}} % The set of all datasets
-\newcommand{\allDatasetsn}{\mathds{D}_n}  % The set of all datasets of size n
+\newcommand{\allDatasets}{\mathbb{D}} % The set of all datasets
+\newcommand{\allDatasetsn}{\mathbb{D}_n}  % The set of all datasets of size n
 \newcommand{\D}{\mathcal{D}} % D, data
 \newcommand{\Dn}{\D_n} % D_n, data of size n
 \newcommand{\Dtrain}{\mathcal{D}_{\text{train}}} % D_train, training set
@@ -115,8 +115,8 @@
 \newcommand{\phixi}{\mathbf{\phi}^{(i)}} % Basis transformation of xi: phi^i := phi(xi)
 
 %%%%%% ml - models general
-\newcommand{\lamv}{\bm{\lambda}} % lambda vector, hyperconfiguration vector
-\newcommand{\Lam}{\bm{\Lambda}}	 % Lambda, space of all hpos
+\newcommand{\lamv}{\boldsymbol{\lambda}} % lambda vector, hyperconfiguration vector
+\newcommand{\Lam}{\boldsymbol{\Lambda}}	 % Lambda, space of all hpos
 % Inducer / Inducing algorithm
 \newcommand{\preimageInducer}{\left(\defAllDatasets\right)\times\Lam} % Set of all datasets times the hyperparameter space
 \newcommand{\preimageInducerShort}{\allDatasets\times\Lam} % Set of all datasets times the hyperparameter space
@@ -162,8 +162,8 @@
 
 % theta
 \newcommand{\thetah}{\hat{\theta}} % theta hat
-\newcommand{\thetav}{\bm{\theta}} % theta vector
-\newcommand{\thetavh}{\bm{\hat\theta}} % theta vector hat
+\newcommand{\thetav}{\boldsymbol{\theta}} % theta vector
+\newcommand{\thetavh}{\boldsymbol{\hat\theta}} % theta vector hat
 \newcommand{\thetat}[1][t]{\thetav^{[#1]}} % theta^[t] in optimization
 \newcommand{\thetatn}[1][t]{\thetav^{[#1 +1]}} % theta^[t+1] in optimization
 \newcommand{\thetahDnlam}{\thetavh_{\Dn, \lamv}} %theta learned on Dn with hp lambda
@@ -203,7 +203,7 @@
 \newcommand{\pibayes}{\pi^{\ast}} % Bayes-optimal classification model
 \newcommand{\pixbayes}{\pi^{\ast}(\xv)} % Bayes-optimal classification model
 \newcommand{\pix}{\pi(\xv)} % pi(x), P(y = 1 | x)
-\newcommand{\piv}{\bm{\pi}} % pi, bold, as vector
+\newcommand{\piv}{\boldsymbol{\pi}} % pi, bold, as vector
 \newcommand{\pikx}[1][k]{\pi_{#1}(\xv)} % pi_k(x), P(y = k | x)
 \newcommand{\pikxt}[1][k]{\pi_{#1}(\xv ~|~ \thetav)} % pi_k(x | theta), P(y = k | x, theta)
 \newcommand{\pixh}{\hat \pi(\xv)} % pi(x) hat, P(y = 1 | x) hat
@@ -217,13 +217,13 @@
 
 % probababilistic
 \newcommand{\bayesrulek}[1][k]{\frac{\P(\xv | y= #1) \P(y= #1)}{\P(\xv)}} % Bayes rule
-\newcommand{\muv}{\bm{\mu}} % expectation vector of Gaussian
-\newcommand{\muk}[1][k]{\bm{\mu_{#1}}} % mean vector of class-k Gaussian (discr analysis)
-\newcommand{\mukh}[1][k]{\bm{\hat{\mu}_{#1}}} % estimated mean vector of class-k Gaussian (discr analysis)
+\newcommand{\muv}{\boldsymbol{\mu}} % expectation vector of Gaussian
+\newcommand{\muk}[1][k]{\boldsymbol{\mu_{#1}}} % mean vector of class-k Gaussian (discr analysis)
+\newcommand{\mukh}[1][k]{\boldsymbol{\hat{\mu}_{#1}}} % estimated mean vector of class-k Gaussian (discr analysis)
 
 % residual and margin
 \newcommand{\eps}{\epsilon} % residual, stochastic
-\newcommand{\epsv}{\bm{\epsilon}} % residual, stochastic, as vector
+\newcommand{\epsv}{\boldsymbol{\epsilon}} % residual, stochastic, as vector
 \newcommand{\epsi}{\epsilon^{(i)}} % epsilon^i, residual, stochastic
 \newcommand{\epsh}{\hat{\epsilon}} % residual, estimated
 \newcommand{\epsvh}{\hat{\epsv}} % residual, estimated, vector
@@ -239,7 +239,7 @@
 \newcommand{\Lxyi}{L\left(\yi, \fxi\right)} % loss of observation
 \newcommand{\Lxyt}{L\left(y, \fxt\right)} % loss with f parameterized
 \newcommand{\Lxyit}{L\left(\yi, \fxit\right)} % loss of observation with f parameterized
-\newcommand{\Lxym}{L\left(\yi, f\left(\bm{\tilde{x}}^{(i)} ~|~ \thetav\right)\right)} % loss of observation with f parameterized
+\newcommand{\Lxym}{L\left(\yi, f\left(\boldsymbol{\tilde{x}}^{(i)} ~|~ \thetav\right)\right)} % loss of observation with f parameterized
 \newcommand{\Lpixy}{L\left(y, \pix\right)} % loss in classification
 \newcommand{\Lpiy}{L\left(y, \pi\right)} % loss in classification
 \newcommand{\Lpiv}{L\left(y, \piv\right)} % loss in classification
@@ -382,7 +382,7 @@
 
 % performance measure
 \newcommand{\rhoL}{\rho_L} % perf. measure derived from pointwise loss
-\newcommand{\F}{\bm{F}} % matrix of prediction scores
+\newcommand{\F}{\boldsymbol{F}} % matrix of prediction scores
 \newcommand{\Fi}[1][i]{\F^{(#1)}} % i-th row vector of the predscore mat
 \newcommand{\FJ}[1][J]{\F_{#1}} % predscore mat idxvec J
 \newcommand{\FJf}{\FJ[J,f]} % predscore mat idxvec J and model f
@@ -571,14 +571,14 @@
 \newcommand{\Lmomentumtilde}{L(\yi, f(x^{(i)}, \tilde{\thetav}))} % Nesterov momentum risk
 \newcommand{\Lmomentum}{L(\yi, f(x^{(i)}, \thetav))} 
 \newcommand{\Hess}{\mathbf{H}}
-\newcommand{\nub}{\bm{\nu}}
+\newcommand{\nub}{\boldsymbol{\nu}}
 
 % deeplearning - autoencoders
 \newcommand{\uauto}{L(x,g(f(x)))} % undercomplete autoencoder objective function
 \newcommand{\dauto}{L(x,g(f(\tilde{x})))} % denoising autoencoder objective function
 
 % deeplearning - adversarials 
-\newcommand{\deltab}{\bm{\delta}}
+\newcommand{\deltab}{\boldsymbol{\delta}}
 \newcommand{\Lossdeltai}{L(\yi, f(\xi + \deltab|\thetav))}
 \newcommand{\Lossdelta}{L(y, f(\xv + \deltab| \thetav))}
 
@@ -604,7 +604,7 @@
 % ------------- ml-regu.tex -------------
 
 % \thetah is \hat{\theta}} (theta hat)
-% \thetav is \bm{\theta}}  (theta vector)
+% \thetav is \boldsymbol{\theta}}  (theta vector)
 \newcommand{\thetas}{\thetav^*} % theta star
 \newcommand{\thetaridge}{\thetav_{\mathrm{ridge}}} % theta (RIDGE)
 \newcommand{\thetalasso}{\thetav_{\mathrm{LASSO}}} % theta (LASSO)
@@ -617,21 +617,23 @@
 \newcommand{\oi}[1][i]{o^{(#1)}} % ??  
 \newcommand{\ti}[1][i]{t^{(#1)}} % ??  
 \newcommand{\deltai}[1][i]{\delta^{(#1)}}  
-\newcommand{\Lxdi}{L\left(\bm{\delta}, \fx\right)}           
+\newcommand{\Lxdi}{L\left(\boldsymbol{\delta}, \fx\right)}           
 
 
 % ------------- ml-svm.tex -------------
 
 % linear svm
 \newcommand{\sv}{\operatorname{SV}} % supportvectors
+\ifdefined\sl
 \renewcommand{\sl}{\zeta} % slack variable
+\else \newcommand{\sl}{\zeta} \fi
 \newcommand{\slvec}{\left(\zeta^{(1)}, \zeta^{(n)}\right)} % slack variable vector
 \newcommand{\sli}[1][i]{\zeta^{(#1)}} % i-th slack variable
 \newcommand{\scptxi}{\scp{\thetav}{\xi}} % scalar prodct of theta and xi
 \newcommand{\svmhplane}{\yi \left( \scp{\thetav}{\xi} + \theta_0 \right)} % SVM hyperplane (normalized)
 \newcommand{\alphah}{\hat{\alpha}} % alpha-hat (basis fun coefficients)
-\newcommand{\alphav}{\bm{\alpha}} % vector alpha (bold) (basis fun coefficients)
-\newcommand{\alphavh}{\hat{\bm{\alpha}}} % vector alpha-hat (basis fun coefficients)
+\newcommand{\alphav}{\boldsymbol{\alpha}} % vector alpha (bold) (basis fun coefficients)
+\newcommand{\alphavh}{\hat{\boldsymbol{\alpha}}} % vector alpha-hat (basis fun coefficients)
 \newcommand{\dualobj}{\sumin \alpha_i - \frac{1}{2}\sumin \sumjn \alpha_i\alpha_j\yi \yi[j] \scp{\xi}{\xv^{(j)}}} % min objective in lin svm dual
 
 % nonlinear svm
@@ -653,4 +655,5 @@
 \newcommand{\pikNh}[1][k]{\hat\pi_#1^{(\Np)}} % estimated class probability node N
 \newcommand{\pikNlh}[1][k]{\hat\pi_#1^{(\Nl)}} % estimated class probability left node
 \newcommand{\pikNrh}[1][k]{\hat\pi_#1^{(\Nr)}} % estimated class probability right node
+$$
 

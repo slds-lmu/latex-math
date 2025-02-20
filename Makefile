@@ -3,22 +3,23 @@ MATHPDF=${MATHRMD:%.Rmd=%.pdf}
 
 TEXFILES=$(shell find . -iname "basic-*tex" -o -iname "ml-*tex")
 
-MATHCOMBINED=latex-math-combined.tex
+MATHCOMBINED=combined.tex
+MATHCOMBINEDQMD=${MATHCOMBINED:%.tex=%.qmd}
 
 
 .PHONY: all pdf combined help
-all: $(MATHPDF) $(MATHCOMBINED)
+all: clean $(MATHPDF) $(MATHCOMBINED)
 pdf: $(MATHPDF)
-combined: $(MATHCOMBINED)
+combined: $(MATHCOMBINED) $(MATHCOMBINEDQMD)
 help:
 	@echo "Usage: make <target>:\n"
-	@echo "  pdf:      render $(MATHRMD) to $(MATHPDF)"
-	@echo "  combined: create the combined tex file $(MATHCOMBINED)"
+	@echo "  pdf:      render $(MATHRMD) to $(MATHPDF). Triggers 'combined' to create $(MATHCOMBINED)"
+	@echo "  combined: create the combined tex file $(MATHCOMBINED) and $(MATHCOMBINEDQMD)"
 	@echo "  clean:    remove $(MATHPDF) and $(MATHCOMBINED)"
-	@echo "  all:      render $(MATHRMD) to $(MATHPDF) and create the combined tex file $(MATHCOMBINED)"
+	@echo "  all:      clean + pdf + combined"
 	@echo "  help:     show this message"
 
-$(MATHPDF): $(MATHRMD) $(TEXFILES)
+$(MATHPDF): $(MATHRMD) $(TEXFILES) $(MATHCOMBINED)
 	@echo rendering $<;
 	Rscript -e "rmarkdown::render('latex-math.Rmd')"
 
@@ -26,9 +27,11 @@ $(MATHCOMBINED): $(TEXFILES)
 	@echo creating $@ from $(TEXFILES);
 	Rscript --quiet create-latex-math-combined.R
 
+.SILENT: clean
 .PHONY: clean
 clean:
-	@echo Removing $(MATHPDF) if it exists;
-	latexmk -C
-	test -f  $(MATHPDF) && rm  $(MATHPDF)
-	test -f combined-latex-and-math.tex && rm combined-latex-and-math.tex
+	@echo Cleaning up;
+	latexmk -C > /dev/null 2>&1
+	test -f  $(MATHPDF) && rm $(MATHPDF) || true
+	test -f $(MATHCOMBINED) && rm $(MATHCOMBINED) || true
+	test -f $(MATHCOMBINEDQMD) && rm $(MATHCOMBINEDQMD) || true
