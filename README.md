@@ -57,7 +57,7 @@ Note that the file `preamble.tex` contains packages required for `latex-math.Rmd
 
 - A new shortcut / notation that falls into the scope of one of the existing files should be added in the respective file with a short description.
 - Multiple shortcuts / notations belonging to another major subject should be summarized in a new `.tex` file. 
-- **Avoid** creating macros consisting of multiple previously defined here --- macros should
+- **Avoid** creating macros consisting of multiple previously defined macros. Macros should
     - be easy to remember
     - be used often enough to warrant a shortcut
     - avoid inter-dependencies between macros and `.tex` files
