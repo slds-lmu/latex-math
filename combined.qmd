@@ -129,6 +129,7 @@ $$% ------------- basic-math.tex -------------
 \newcommand{\fx}{f(\xv)} % f(x), continuous prediction function
 \newcommand{\fdomains}{f: \Xspace \rightarrow \R^g} % f with domain and co-domain
 \newcommand{\Hspace}{\mathcal{H}} % hypothesis space where f is from
+\newcommand{\Hall}{\Hspace_{all}}  % all hypothesis space
 \newcommand{\fbayes}{f^{\ast}} % Bayes-optimal model
 \newcommand{\fxbayes}{f^{\ast}(\xv)} % Bayes-optimal model
 \newcommand{\fkx}[1][k]{f_{#1}(\xv)} % f_j(x), discriminant component function
