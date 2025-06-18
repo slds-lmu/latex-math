@@ -1,15 +1,22 @@
 % ml - Gaussian Process
 
-\newcommand{\fvec}{\left[f\left(\xi[1]\right), \dots, f\left(\xi[n]\right) \right]} % function vector
+\newcommand{\fvec}{[f(\xi[1]), \dots, f(\xi[n])]} % function vector TRANSPOSE????
 \newcommand{\fv}{\mathbf{f}} % function vector
-\newcommand{\kv}{\mathbf{k}} % cov matrix partition
-\newcommand{\kxxp}{k\left(\xv, \xv^{\prime} \right)} % cov of x, x'
-\newcommand{\kxij}[2]{k\left(\xi, \xi[j] \right)} % cov of x_i, x_j
 \newcommand{\mv}{\mathbf{m}} % GP mean vector
+\newcommand{\kv}{\mathbf{k}} % cov matrix partition
+\newcommand{\kxxt}{k(\xv, \xtil)} % cov of x, x'
+\newcommand{\kxij}[2]{k(\xi, \xi[j])} % cov of x_i, x_j
 \newcommand{\Kmat}{\mathbf{K}} % GP cov matrix
-\newcommand{\gaussmk}{\normal(\mv, \Kmat)} % Gaussian w/ mean vec, cov mat
-\newcommand{\gp}{\mathcal{GP}\left(m(\xv), \kxxp \right)} % Gaussian Process Definition
+\newcommand{\nmk}{\normal(\mv, \Kmat)} % Gaussian w/ mean vec, cov mat
+\newcommand{\nzk}{\normal(\zero, \Kmat)}
+\newcommand{\gpmk}{\mathcal{GP}(m(\cdot), k(\cdot, \cdot))} % Gaussian Process Definition
+\newcommand{\gpzk}{\mathcal{GP}(\zero, k(\cdot, \cdot))} % zero-mean GP
+\newcommand{\Xsubset}{\bm{X}} % finite subset from xspace
+\newcommand{\fX}{f(\Xsubset)} % Gaussian vector of finite subset
+\newcommand{\kXX}{k(\Xsubset, \Xsubset)} % kernel fun for finite subset
+\newcommand{\mX}{m(\Xsubset)} % mean fun for finite subset
 \newcommand{\ls}{\ell} % length-scale
+\newcommand{\xxtnorm}{\| \xv - \xtil\|} % norm of x minus x tilde
 \newcommand{\sqexpkernel}{\exp \left(- \frac{\| \xv - \xv^{\prime} \|^2}{2 \ls^2} \right)} % squared exponential kernel
 
 % GP prediction
